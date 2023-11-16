@@ -6,3 +6,5 @@
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 script = ExtResource("1_eedtt")
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
