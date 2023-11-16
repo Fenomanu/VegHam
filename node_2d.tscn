@@ -10,3 +10,4 @@ texture = ExtResource("1_a76og")
 script = ExtResource("1_eedtt")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
