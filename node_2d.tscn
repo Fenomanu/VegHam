@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfur8fgxmnxck"]
+[gd_scene load_steps=3 format=3 uid="uid://donai36peg2qi"]
 
+[ext_resource type="Texture2D" uid="uid://jii55hhl47gt" path="res://icon.svg" id="1_a76og"]
 [ext_resource type="Script" path="res://moving.cs" id="1_eedtt"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_a76og")
 script = ExtResource("1_eedtt")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
