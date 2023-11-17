@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbc3vlyvj0jbh"]
+
+[ext_resource type="Texture2D" uid="uid://cc3taxhebvwhc" path="res://test/rodrigo_test/round_nodetailsOutline.png" id="1_7q817"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_y02hf"]
+
+[node name="character" type="Node2D"]
+script = ExtResource("1_y02hf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7q817")
+centered = false
+offset = Vector2(1, 1)
+hframes = 6
+vframes = 6
+region_rect = Rect2(683, 679.795, 136.41, 142.256)
