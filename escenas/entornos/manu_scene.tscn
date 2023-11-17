@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhg88doqhlprw"]
+
+[ext_resource type="Script" path="res://scripts/personaje/movement.cs" id="1_4cqu6"]
+[ext_resource type="SpriteFrames" uid="uid://dgq1ut0rmfb46" path="res://recursos/personaje/main.tres" id="2_g1h5w"]
+[ext_resource type="Texture2D" uid="uid://cbprakhrflrha" path="res://arte/sprites/step03_check.png" id="3_bq88v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwsem"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vasdr"]
+size = Vector2(962, 58)
+
+[node name="manu_scene" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_4cqu6")
+
+[node name="sprite" type="AnimatedSprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(0, -5)
+scale = Vector2(0.7, 0.7)
+sprite_frames = ExtResource("2_g1h5w")
+frame_progress = 0.368483
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_xwsem")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2, 273)
+shape = SubResource("RectangleShape2D_vasdr")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+z_index = -5
+texture = ExtResource("3_bq88v")
