@@ -12,6 +12,7 @@ size = Vector2(962, 58)
 [node name="manu_scene" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(2, 2)
 script = ExtResource("1_4cqu6")
 
 [node name="sprite" type="AnimatedSprite2D" parent="CharacterBody2D"]
@@ -19,12 +20,14 @@ texture_filter = 1
 position = Vector2(0, -5)
 scale = Vector2(0.7, 0.7)
 sprite_frames = ExtResource("2_g1h5w")
-frame_progress = 0.368483
+autoplay = "default"
+frame_progress = 0.711259
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CapsuleShape2D_xwsem")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+texture_filter = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
