@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://csmfuctxg0bji"]
+[gd_scene load_steps=9 format=3 uid="uid://csmfuctxg0bji"]
 
 [ext_resource type="TileSet" uid="uid://bbrbh1tmn88so" path="res://test/rodrigo_test/test_env.tres" id="1_c1sch"]
 [ext_resource type="Script" path="res://scripts/Grid.gd" id="2_p422n"]
 [ext_resource type="Texture2D" uid="uid://d14uw02yd2tfb" path="res://test/rodrigo_test/tilemap.png" id="3_xkp24"]
 [ext_resource type="PackedScene" uid="uid://cbc3vlyvj0jbh" path="res://test/rodrigo_test/character.tscn" id="4_8k1yr"]
-[ext_resource type="Script" path="res://test/manu_test/MovableObjs.gd" id="5_2ok8k"]
+[ext_resource type="Script" path="res://scripts/objetos_niveles/MovableObjs1.gd" id="5_qq0iy"]
+[ext_resource type="SpriteFrames" uid="uid://cdu7kxhudrv1h" path="res://test/manu_test/block.tres" id="6_rej6s"]
+[ext_resource type="SpriteFrames" uid="uid://dxikdh8vlrbe1" path="res://test/manu_test/key.tres" id="7_w71it"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3m8i"]
 atlas = ExtResource("3_xkp24")
@@ -42,5 +44,16 @@ position = Vector2(-800, -320)
 scale = Vector2(5, 5)
 anchor_mode = 0
 
-[node name="MovableObjs" type="Node2D" parent="TileMap"]
-script = ExtResource("5_2ok8k")
+[node name="MovableObjs" type="Node2D" parent="TileMap" node_paths=PackedStringArray("sprite1", "sprite2")]
+script = ExtResource("5_qq0iy")
+sprite1 = NodePath("block")
+sprite2 = NodePath("key")
+
+[node name="block" type="AnimatedSprite2D" parent="TileMap/MovableObjs"]
+texture_filter = 1
+scale = Vector2(0.05, 0.05)
+sprite_frames = ExtResource("6_rej6s")
+
+[node name="key" type="AnimatedSprite2D" parent="TileMap/MovableObjs"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = ExtResource("7_w71it")
