@@ -1,12 +1,15 @@
 extends Node2D
+class_name Player
 
-enum ActionType {MOVE}
+enum EAction {MOVE}
+enum EClass {RAT, HUMAN, BIRD}
 
 
 @export var grid : Grid
 @export var distance : int
 
 var paused : bool = false
+var type : EClass
 var obstacle_layers = []
 
 var paths = {}
@@ -37,14 +40,14 @@ func _process(delta):
 func back():
 	if not historial.is_empty():
 		var action = historial.pop_back()
-		if action.type == ActionType.MOVE:
+		if action.type == EAction.MOVE:
 			position = grid.map_to_local(action.path[0]) - Vector2.ONE * (grid.size / 2)
 			grid.clear_path(prev_path)
 			paths = grid.get_paths(distance, global_position, obstacle_layers)
 
 
 func move():
-	historial.append({"type": ActionType.MOVE, "path": steps})
+	historial.append({"type": EAction.MOVE, "path": steps})
 	position = grid.map_to_local(steps[-1]) - Vector2.ONE * (grid.size / 2)
 	grid.clear_path(prev_path)
 	paths = grid.get_paths(distance, global_position, obstacle_layers)

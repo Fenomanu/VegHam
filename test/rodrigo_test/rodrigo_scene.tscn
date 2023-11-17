@@ -32,6 +32,13 @@ layer_1/tile_data = PackedInt32Array(589830, 0, 1, 655365, 0, 1, 655366, 0, 5, 7
 script = ExtResource("2_1ykx1")
 arrow = SubResource("AtlasTexture_vftt0")
 
+[node name="character2" parent="TileMap" node_paths=PackedStringArray("grid") instance=ExtResource("2_f4gre")]
+z_index = 10
+position = Vector2(-16, 128)
+scale = Vector2(0.1, 0.1)
+grid = NodePath("..")
+distance = 2
+
 [node name="character" parent="TileMap" node_paths=PackedStringArray("grid") instance=ExtResource("2_f4gre")]
 z_index = 10
 position = Vector2(64, 32)
