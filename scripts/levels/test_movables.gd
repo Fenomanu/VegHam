@@ -34,4 +34,5 @@ func _ready():
 			"sprite": cable,
 			"connected_to": tendidoRefs
 		}
+		
 	super._ready()

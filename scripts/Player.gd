@@ -1,8 +1,8 @@
 extends Node2D
 class_name Player
 
-enum EAction {MOVE, INTERACT, PASS}
-enum EClass {RAT=0, HUMAN=1, BIRD=2}
+enum EAction {MOVE, INTERACT, PASS, ACTION}
+enum EClass {RAT, HUMAN, BIRD}
 
 @export var disp : Vector2
 @export var grid : Grid
@@ -30,7 +30,8 @@ var prev_target
 func _ready():
 	for i in range(len(obstacle_layers)):
 		obstacle_layers[i] = grid.get_layer_by_name(obstacle_layers[i])
-	update_position(grid.local_to_map(position))
+	gridPosition = grid.local_to_map(position)
+	update_position(gridPosition)
 
 
 func _process(delta):
@@ -40,13 +41,25 @@ func _process(delta):
 	var pos = grid.local_to_map(mouse)
 	var mov_pos = Vector3i(pos.x, pos.y, level)
 	
-	if draw_path(pos) and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if draw_path(pos) and Input.is_action_just_pressed("Action"):
 		move()
 	elif Input.is_action_just_pressed("Back"):
 		back()
-	elif mov_pos in interactables and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	elif mov_pos in interactables and Input.is_action_just_pressed("Action"):
 		interact(interactables[mov_pos], mov_pos)
 		update_position(gridPosition)
+	elif Input.is_action_just_pressed("Pass"):
+		historial.append({"type": EAction.PASS})
+
+
+func time_back(action):
+	if action.type == EAction.MOVE:
+		update_position(action.path[0])
+	elif action.type == EAction.PASS:
+		pass
+	else:
+		return false
+	return true
 
 
 func interact(obj, position):
@@ -54,10 +67,12 @@ func interact(obj, position):
 
 
 func update_position(pos):
-	print(pos)
+	movables.move_object(Vector3i(gridPosition.x, gridPosition.y, level), \
+						 Vector3i(pos.x, pos.y, level))
 	gridPosition = pos
 	
-	grid.clear_path(prev_path)
+	clear()
+	
 	position = grid.map_to_local(pos) + disp * grid.tile_set.tile_size.x
 	paths = grid.get_paths(distance, pos, obstacle_layers, type, level)
 	interactables = movables.get_interactable(Vector3i(pos.x, pos.y, level), type)
@@ -65,17 +80,18 @@ func update_position(pos):
 	var selected_tiles = []
 	for k in interactables.keys():
 		selected_tiles.append(Vector2i(k.x, k.y))
-	grid.clear_path(prev_selected)
 	prev_selected = grid.draw_path(selected_tiles, 1)
+
+
+func clear():
+	grid.clear_path(prev_path)
+	grid.clear_path(prev_selected)
 
 
 func back():
 	if not historial.is_empty():
 		var action = historial.pop_back()
-		if action.type == EAction.MOVE:
-			update_position(action.path[0])
-		elif action.type == EAction.PASS:
-			pass
+		time_back(action)
 
 
 func move():

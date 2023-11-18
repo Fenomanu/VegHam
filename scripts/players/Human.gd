@@ -23,3 +23,29 @@ func interact(obj, position):
 			movables.move_object(position, mov_pos)
 			obj.sprite.position = grid.map_to_local(pos) - Vector2(0.5, 0.5) * grid.tile_set.tile_size.x
 			update_position(Vector2i(position.x, position.y))
+			historial.append({
+				"type": EAction.INTERACT, 
+				"obj": obj, 
+				"position": mov_pos
+			})
+
+
+func time_back(action):
+	if super.time_back(action):
+		return true
+	
+	if action.type == EAction.INTERACT:
+		var obj = action.obj
+		if obj.type == MovableObjs.EMovable.BLOCK:
+			var position = action.position
+			
+			var mov_player = Vector3i(gridPosition.x, gridPosition.y, position.z)
+			var mov_pos = mov_player + (mov_player - position)
+			var pos = Vector2i(mov_pos.x, mov_pos.y)
+			
+			movables.move_object(position, mov_player)
+			obj.sprite.position = grid.map_to_local(gridPosition) - Vector2(0.5, 0.5) * grid.tile_set.tile_size.x
+			update_position(pos)
+	else:
+		return false
+	return true
