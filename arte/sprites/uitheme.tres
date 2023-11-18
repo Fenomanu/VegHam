@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cqllbjjt33jjy"]
+
+[ext_resource type="StyleBox" uid="uid://d35j2q3ajc0k7" path="res://arte/sprites/ui/button_float.tres" id="1_x7v8u"]
+[ext_resource type="StyleBox" uid="uid://chvgrf2aqjmlu" path="res://arte/sprites/ui/hover.tres" id="1_xr2fv"]
+[ext_resource type="StyleBox" uid="uid://5raya41xe8i2" path="res://arte/sprites/ui/pressed.tres" id="3_anccp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1drl"]
+
+[resource]
+default_font_size = 26
+Button/constants/h_separation = 0
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 26
+Button/styles/focus = SubResource("StyleBoxEmpty_p1drl")
+Button/styles/hover = ExtResource("1_xr2fv")
+Button/styles/normal = ExtResource("1_x7v8u")
+Button/styles/pressed = ExtResource("3_anccp")
