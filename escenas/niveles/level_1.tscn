@@ -84,12 +84,14 @@ arrow = ExtResource("5_bros8")
 selected = ExtResource("6_rtbjj")
 movables = NodePath("../MovableObjs")
 
-[node name="Human" parent="TileMap" node_paths=PackedStringArray("grid", "movables") instance=ExtResource("7_xp2tf")]
+[node name="Human" parent="TileMap" node_paths=PackedStringArray("grid", "movables", "time_manager") instance=ExtResource("7_xp2tf")]
 z_index = 10
 position = Vector2(0, 1008)
 disp = Vector2(-0.5, 0.5)
 grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
+time_manager = NodePath("../../TimeManager")
+level = null
 
 [node name="contenedor 1" type="Sprite2D" parent="TileMap"]
 position = Vector2(2048, 0)

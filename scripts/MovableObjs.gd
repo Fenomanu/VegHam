@@ -2,7 +2,7 @@ extends Node2D
 class_name MovableObjs
 
 
-enum EMovable {BLOCK, CONTROL, CABLE, PLAYER}
+enum EMovable {BLOCK, CONTROL, CABLE, PLAYER, WIN}
 
 
 @export var grid: Grid
