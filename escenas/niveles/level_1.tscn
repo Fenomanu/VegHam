@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://cgbjwxaenlhw"]
 
-[ext_resource type="Script" path="res://escenas/niveles/CharacterCam.gd" id="1_7qglc"]
 [ext_resource type="Script" path="res://scripts/levels/test_movables.gd" id="1_bh6m0"]
+[ext_resource type="PackedScene" uid="uid://bqmqhqssqu2f3" path="res://escenas/props/character_cam.tscn" id="1_k2nqx"]
 [ext_resource type="Script" path="res://scripts/TimeManager.gd" id="2_cqs5h"]
 [ext_resource type="TileSet" uid="uid://bbrbh1tmn88so" path="res://test/rodrigo_test/test_env.tres" id="3_fat06"]
 [ext_resource type="Script" path="res://scripts/Grid.gd" id="4_owohy"]
@@ -50,10 +50,7 @@ corner_detail = 20
 
 [node name="level_1" type="Node2D"]
 
-[node name="CharacterCam" type="Camera2D" parent="."]
-position = Vector2(884, 116)
-scale = Vector2(1, 1.04236)
-script = ExtResource("1_7qglc")
+[node name="CharacterCam" parent="." instance=ExtResource("1_k2nqx")]
 
 [node name="MovableObjs" type="Node2D" parent="." node_paths=PackedStringArray("basura", "cable", "tendido", "grid", "players")]
 position = Vector2(320, 64)
@@ -209,13 +206,12 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_4oikv")
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxFlat_4oikv")
 
-[node name="CharSelector" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("cam", "buttons", "characters")]
+[node name="CharSelector" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("buttons", "characters")]
 offset_right = 1024.0
 offset_bottom = 3080.0
 scale = Vector2(0.12, 0.12)
 pivot_offset = Vector2(20, 20)
 script = ExtResource("12_odfut")
-cam = NodePath("../../CharacterCam")
 buttons = [null, NodePath("Human"), null]
 characters = [null, NodePath("../../TileMap/Human"), null]
 

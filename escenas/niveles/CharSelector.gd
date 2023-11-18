@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-
+@export var button_sound : AudioStreamPlayer2D
 @export var starts : Player.EClass
 @export var cam : CharacterCam
 @export var buttons : Array[Button]
@@ -8,6 +8,7 @@ extends VBoxContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	button_sound.volume_db = -80
 	buttons[starts].button_pressed = true;
 	if starts == 0:
 		_on_rat_pressed()
@@ -15,6 +16,8 @@ func _ready():
 		_on_human_pressed()
 	elif starts == 2:
 		_on_bird_pressed()
+	button_sound.stop()
+	button_sound.volume_db = 0
 	pass # Replace with function body.
 
 
@@ -24,6 +27,7 @@ func _process(delta):
 
 
 func _on_rat_pressed():
+	button_sound.play()
 	cam.track(characters[0],3)
 	characters[0].pause(false);
 	if characters[1] != null:
@@ -36,6 +40,7 @@ func _on_rat_pressed():
 
 
 func _on_human_pressed():
+	button_sound.play()
 	cam.track(characters[1],2)
 	if characters[0] != null:
 		characters[0].pause(true);
@@ -48,6 +53,7 @@ func _on_human_pressed():
 
 
 func _on_bird_pressed():
+	button_sound.play()
 	cam.track(characters[2], 1.3)
 	if characters[0] != null:
 		characters[0].pause(true);

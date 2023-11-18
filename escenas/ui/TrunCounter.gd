@@ -1,7 +1,9 @@
 extends Control
 
+@export var next_scene : PackedScene
 @export var sliders : Array[Slider]
 @export var scores : Array[Label]
+
 
 var max_ts : int
 
@@ -31,3 +33,6 @@ func set_turns_left(player : Player.EClass, tl : int):
 	elif player == Player.EClass.BIRD && scores[2] != null:
 		scores[2].text = str(tl)
 		sliders[2].value = float(max_ts - tl)/max_ts
+
+func next_level():
+	get_tree().change_scene_to_packed(next_scene)

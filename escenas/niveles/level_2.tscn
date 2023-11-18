@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/Grid.gd" id="4_6kln6"]
 [ext_resource type="Texture2D" uid="uid://bvfjvuajg5dn2" path="res://arte/carretera.png" id="5_0pdab"]
 [ext_resource type="Texture2D" uid="uid://db6bw0pcu6fgd" path="res://test/rodrigo_test/tex.png" id="6_b0fsm"]
-[ext_resource type="PackedScene" uid="uid://cbc3vlyvj0jbh" path="res://recursos/personaje/human.tscn" id="7_2dy7n"]
+[ext_resource type="PackedScene" path="res://recursos/personaje/human.tscn" id="7_2dy7n"]
 [ext_resource type="Texture2D" uid="uid://bdm3p5l7k6wfk" path="res://test/rodrigo_test/estrella.png" id="10_xhw13"]
 [ext_resource type="Texture2D" uid="uid://cc3taxhebvwhc" path="res://test/rodrigo_test/round_nodetailsOutline.png" id="11_hr1o7"]
 [ext_resource type="Script" path="res://escenas/niveles/CharSelector.gd" id="12_0xc1p"]
@@ -132,7 +132,7 @@ script = ExtResource("12_0xc1p")
 starts = 1
 cam = NodePath("../../Camera2D")
 buttons = [NodePath("Rat"), NodePath("Human"), NodePath("Bird")]
-characters = [NodePath(""), NodePath("../../TileMap/Human"), null]
+characters = [null, NodePath("../../TileMap/Human"), null]
 
 [node name="Rat" type="Button" parent="CanvasLayer/CharSelector"]
 visible = false

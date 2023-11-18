@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqmqhqssqu2f3"]
+
+[ext_resource type="Script" path="res://escenas/niveles/CharacterCam.gd" id="1_msppe"]
+
+[node name="CharacterCam" type="Camera2D"]
+position = Vector2(884, 116)
+scale = Vector2(1, 1.04236)
+script = ExtResource("1_msppe")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
