@@ -18,9 +18,12 @@ var paused : bool = false
 var paths = {}
 var interactables = {}
 var steps = []
+var gridPosition
+
+var historial = []
 
 var prev_path = []
-var historial = []
+var prev_selected = []
 var prev_target
 
 
@@ -35,13 +38,15 @@ func _process(delta):
 	
 	var mouse = grid.to_local(get_viewport().get_mouse_position())
 	var pos = grid.local_to_map(mouse)
+	var mov_pos = Vector3i(pos.x, pos.y, level)
 	
 	if draw_path(pos) and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		move()
 	elif Input.is_action_just_pressed("Back"):
 		back()
-	elif pos in interactables and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		interact(interactables[pos], pos)
+	elif mov_pos in interactables and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		interact(interactables[mov_pos], mov_pos)
+		update_position(gridPosition)
 
 
 func interact(obj, position):
@@ -49,10 +54,19 @@ func interact(obj, position):
 
 
 func update_position(pos):
+	print(pos)
+	gridPosition = pos
+	
 	grid.clear_path(prev_path)
 	position = grid.map_to_local(pos) + disp * grid.tile_set.tile_size.x
 	paths = grid.get_paths(distance, pos, obstacle_layers, type, level)
 	interactables = movables.get_interactable(Vector3i(pos.x, pos.y, level), type)
+	
+	var selected_tiles = []
+	for k in interactables.keys():
+		selected_tiles.append(Vector2i(k.x, k.y))
+	grid.clear_path(prev_selected)
+	prev_selected = grid.draw_path(selected_tiles, 1)
 
 
 func back():
@@ -87,6 +101,6 @@ func draw_path(pos):
 		path = paths[pos].values()[0]
 	steps = path
 	
-	prev_path = grid.draw_path(path.slice(1, len(path)))
+	prev_path = grid.draw_path(path.slice(1, len(path)), 0)
 	
 	return true

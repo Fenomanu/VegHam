@@ -2,7 +2,7 @@ extends Node2D
 class_name MovableObjs
 
 
-enum EMovable {CAT, BLOCK, KEY, DOOR, CONTROL, CABLETOP, CABLELOW}
+enum EMovable {BLOCK, CONTROL, CABLE, PLAYER}
 
 
 @export var grid: Grid
@@ -12,7 +12,7 @@ static var directions = [Vector3i(0, 1, 0), Vector3i(0, -1, 0), Vector3i(1, 0, 0
 
 
 var interactables = {}
-#elem: {"type": EMovable, "block": bool, "can_interact" list[Player.EClass]}
+#elem: {"type": EMovable, "block": true, "can_interact" list[]}
 
 
 func _ready():

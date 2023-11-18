@@ -6,6 +6,7 @@ enum ActionType {MOVE}
 
 
 @export var arrow : Texture
+@export var selected : Texture
 @export var movables : MovableObjs
 
 static var directions = [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
@@ -16,14 +17,14 @@ func clear_path(path):
 		path.pop_front().queue_free()
 
 
-func draw_path(path):
+func draw_path(path, text):
 	var result = []
 	for step in path: 
 		var sprite = Sprite2D.new()
 		result.append(sprite)
 		add_child(sprite)
 		sprite.position = map_to_local(step)
-		sprite.texture = arrow
+		sprite.texture = (arrow if text == 0 else selected)
 	return result
 
 

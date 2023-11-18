@@ -12,4 +12,10 @@ func _ready():
 
 
 func interact(obj, position):
-	pass
+	if obj.type == MovableObjs.EMovable.CONTROL:
+		obj.can_interact = []
+		# set sprite to broken
+		for t in obj.connected_to:
+			t.block = false
+			# set sprite no energy
+			# all players should recalculate paths

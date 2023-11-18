@@ -7,6 +7,7 @@
 script = ExtResource("1_kq4ht")
 
 [node name="SoniaFront" type="Sprite2D" parent="."]
+z_index = 10
 texture = ExtResource("2_8w6l6")
 centered = false
 offset = Vector2(0, -768)
