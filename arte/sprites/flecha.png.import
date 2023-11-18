@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbloxi4rpud5q"
-path="res://.godot/imported/FS_ROTOS.png-a1e955ab2cdbdf1aa0b92c4fce7e4918.ctex"
+uid="uid://b5q8igl3jq6ep"
+path="res://.godot/imported/flecha.png-bdf6b971f63d612334b7aacc0d2b1a5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arte/sprites/FS_ROTOS.png"
-dest_files=["res://.godot/imported/FS_ROTOS.png-a1e955ab2cdbdf1aa0b92c4fce7e4918.ctex"]
+source_file="res://arte/sprites/flecha.png"
+dest_files=["res://.godot/imported/flecha.png-bdf6b971f63d612334b7aacc0d2b1a5b.ctex"]
 
 [params]
 

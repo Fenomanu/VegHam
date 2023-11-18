@@ -43,7 +43,8 @@ func check_walkable(pos: Vector3i, type: Player.EClass):
 		return !interactables[pos].block
 	elif type == Player.EClass.RAT:
 		# Rat collides with all in his layer
-		return !interactables[pos].block
+		return !interactables[pos].block or \
+			   interactables[pos].type == EMovable.CABLE
 	
 	push_error("Unknown player class")
 	return false

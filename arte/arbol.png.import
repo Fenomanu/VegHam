@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4anghyqd36of"
-path="res://.godot/imported/poste_electrico_tile.png-4e8cfbb84f7e3c704e6a80b440ae1b02.ctex"
+uid="uid://rv1u5pbwqt7w"
+path="res://.godot/imported/arbol.png-d6a585c2944eaa2e0752c37a4292519c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arte/sprites/poste_electrico_tile.png"
-dest_files=["res://.godot/imported/poste_electrico_tile.png-4e8cfbb84f7e3c704e6a80b440ae1b02.ctex"]
+source_file="res://arte/arbol.png"
+dest_files=["res://.godot/imported/arbol.png-d6a585c2944eaa2e0752c37a4292519c.ctex"]
 
 [params]
 

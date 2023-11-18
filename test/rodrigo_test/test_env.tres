@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://bbrbh1tmn88so"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://bbrbh1tmn88so"]
 
 [ext_resource type="Texture2D" uid="uid://d14uw02yd2tfb" path="res://test/rodrigo_test/tilemap.png" id="1_c47jf"]
 [ext_resource type="Texture2D" uid="uid://ctkvkxektdt1t" path="res://arte/acera.png" id="2_3blwv"]
 [ext_resource type="Texture2D" uid="uid://7lih3aq5qcd2" path="res://test/rodrigo_test/circulo.png" id="3_xlo7r"]
 [ext_resource type="Texture2D" uid="uid://bdm3p5l7k6wfk" path="res://test/rodrigo_test/estrella.png" id="4_gsf7a"]
+[ext_resource type="Texture2D" uid="uid://rv1u5pbwqt7w" path="res://arte/arbol.png" id="5_8dvc3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8r7it"]
 texture = ExtResource("1_c47jf")
@@ -222,9 +223,28 @@ texture = ExtResource("4_gsf7a")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bxh7u"]
+load_path = "res://.godot/imported/arbolV2.png-383bc830ed4ad5bb0a8bfe3d9e5c7906.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_njcxe"]
+texture = SubResource("CompressedTexture2D_bxh7u")
+texture_region_size = Vector2i(512, 512)
+0:2/0 = 0
+1:1/0 = 0
+1:2/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omahr"]
+texture = ExtResource("5_8dvc3")
+texture_region_size = Vector2i(512, 512)
+0:0/0 = 0
+0:1/0 = 0
+
 [resource]
 tile_size = Vector2i(512, 512)
 sources/0 = SubResource("TileSetAtlasSource_8r7it")
 sources/1 = SubResource("TileSetAtlasSource_a5ifx")
 sources/2 = SubResource("TileSetAtlasSource_yj5xa")
 sources/3 = SubResource("TileSetAtlasSource_ndumf")
+sources/4 = SubResource("TileSetAtlasSource_njcxe")
+sources/9 = SubResource("TileSetAtlasSource_omahr")
