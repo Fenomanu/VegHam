@@ -1,12 +1,13 @@
 extends Node2D
 class_name Player
 
-enum EAction {MOVE, INTERACT, PASS}
+enum EAction {MOVE, INTERACT, PASS, WIN}
 enum EClass {RAT, HUMAN, BIRD}
 
 @export var disp : Vector2
 @export var grid : Grid
 @export var movables : MovableObjs
+@export var time_manager: TimeManager
 @export var level : int = 0
 
 var distance : int = 1
@@ -32,6 +33,7 @@ func pause(p):
 	if paused:
 		clear()
 	else:
+		time_manager.go_to(len(historial))
 		update_position(gridPosition)
 
 
@@ -45,19 +47,23 @@ func _ready():
 func _process(delta):
 	if paused: return
 	
-	var mouse = grid.to_local(get_viewport().get_mouse_position())
+	var mouse = grid.to_local(get_global_mouse_position())
 	var pos = grid.local_to_map(mouse)
 	var mov_pos = Vector3i(pos.x, pos.y, level)
 	
 	if draw_path(pos) and Input.is_action_just_pressed("Action"):
 		move()
+		time_manager.next_step(self)
 	elif Input.is_action_just_pressed("Back"):
 		back()
+		time_manager.time_back(self)
 	elif mov_pos in interactables and Input.is_action_just_pressed("Action"):
 		interact(interactables[mov_pos], mov_pos)
 		update_position(gridPosition)
+		time_manager.next_step(self)
 	elif Input.is_action_just_pressed("Pass"):
 		historial.append({"type": EAction.PASS})
+		time_manager.next_step(self)
 
 
 func time_step(action):
