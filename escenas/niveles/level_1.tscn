@@ -67,7 +67,7 @@ players = [NodePath("../TileMap/rat"), NodePath("../TileMap/Human"), NodePath(".
 
 [node name="TimeManager" type="Node2D" parent="." node_paths=PackedStringArray("players")]
 script = ExtResource("2_cqs5h")
-players = [NodePath("../TileMap/rat"), NodePath("../TileMap/Human"), NodePath("../TileMap/bird")]
+players = [NodePath("../TileMap/Human")]
 
 [node name="TileMap" type="TileMap" parent="." node_paths=PackedStringArray("movables")]
 position = Vector2(320, 64)
@@ -110,13 +110,12 @@ arrow = ExtResource("5_bros8")
 selected = ExtResource("6_rtbjj")
 movables = NodePath("../MovableObjs")
 
-[node name="Human" parent="TileMap" node_paths=PackedStringArray("grid", "movables", "time_manager") instance=ExtResource("7_xp2tf")]
+[node name="Human" parent="TileMap" node_paths=PackedStringArray("grid", "movables") instance=ExtResource("7_xp2tf")]
 z_index = 10
 position = Vector2(0, 1024)
 disp = Vector2(-0.5, 0.5)
 grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
-time_manager = NodePath("../../TimeManager")
 level = null
 
 [node name="rat" parent="TileMap" node_paths=PackedStringArray("grid", "movables", "time_manager") instance=ExtResource("8_mit2j")]
@@ -217,8 +216,8 @@ scale = Vector2(0.12, 0.12)
 pivot_offset = Vector2(20, 20)
 script = ExtResource("12_odfut")
 cam = NodePath("../../CharacterCam")
-buttons = [NodePath("Rat"), NodePath("Human"), NodePath("Bird")]
-characters = [NodePath("../../TileMap/rat"), NodePath("../../TileMap/Human"), NodePath("../../TileMap/bird")]
+buttons = [null, NodePath("Human"), null]
+characters = [null, NodePath("../../TileMap/Human"), null]
 
 [node name="Rat" type="Button" parent="CanvasLayer/CharSelector"]
 layout_mode = 2

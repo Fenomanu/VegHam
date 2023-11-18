@@ -107,11 +107,9 @@ scale = Vector2(2.5, 2.5)
 texture = SubResource("AtlasTexture_qwf3e")
 centered = false
 
-[node name="bird" parent="TileMap" node_paths=PackedStringArray("grid", "movables") instance=ExtResource("8_05ix1")]
+[node name="bird" parent="TileMap" instance=ExtResource("8_05ix1")]
 position = Vector2(3072, 1536)
 disp = Vector2(-0.5, -0.5)
-grid = NodePath("")
-movables = NodePath("")
 level = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
