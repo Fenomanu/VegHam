@@ -84,12 +84,13 @@ arrow = ExtResource("6_5n75f")
 selected = ExtResource("7_gv3ol")
 movables = NodePath("../MovableObjs")
 
-[node name="Human" parent="TileMap" node_paths=PackedStringArray("grid", "movables") instance=ExtResource("8_vbgtw")]
+[node name="Human" parent="TileMap" node_paths=PackedStringArray("grid", "movables", "time_manager") instance=ExtResource("8_vbgtw")]
 z_index = 10
 position = Vector2(0, 1008)
 disp = Vector2(-0.5, 0.5)
 grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
+time_manager = NodePath("../../TimeManager")
 level = null
 
 [node name="contenedor 1" type="Sprite2D" parent="TileMap"]
@@ -131,11 +132,13 @@ offset_right = 1024.0
 offset_bottom = 3080.0
 scale = Vector2(0.157093, 0.157093)
 script = ExtResource("11_jcut2")
+starts = 1
 cam = NodePath("../../CharacterCam")
 buttons = [null, NodePath("Human"), null]
 characters = [null, NodePath("../../TileMap/Human"), null]
 
 [node name="Rat2" type="Button" parent="CanvasLayer/CharSelector"]
+visible = false
 layout_mode = 2
 theme_override_colors/icon_normal_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
@@ -162,6 +165,7 @@ toggle_mode = true
 icon = ExtResource("16_7suj2")
 
 [node name="Bird2" type="Button" parent="CanvasLayer/CharSelector"]
+visible = false
 layout_mode = 2
 theme_override_colors/icon_normal_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
