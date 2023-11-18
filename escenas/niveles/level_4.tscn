@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dna7hrbug4njv"]
+[gd_scene load_steps=24 format=3 uid="uid://dna7hrbug4njv"]
 
 [ext_resource type="Script" path="res://scripts/levels/level4.gd" id="1_dxfkx"]
 [ext_resource type="Script" path="res://escenas/niveles/CharacterCam.gd" id="1_p2axf"]
@@ -21,6 +21,7 @@
 [ext_resource type="StyleBox" uid="uid://4k12n2b7w3tx" path="res://arte/sprites/ui/level/pressed.tres" id="14_xnahg"]
 [ext_resource type="Texture2D" uid="uid://bv2spd2jnopti" path="res://arte/sprites/anna_dialogo.png" id="15_iduse"]
 [ext_resource type="Texture2D" uid="uid://durxojtc1f7rs" path="res://arte/sprites/sonya_dialogo.png" id="16_pr6uo"]
+[ext_resource type="Texture2D" uid="uid://3tqvdkq505ao" path="res://arte/sprites/CASA.png" id="16_ubhh1"]
 [ext_resource type="Texture2D" uid="uid://ctecnqs4fntme" path="res://arte/sprites/ruben_dialogo.png" id="17_i484y"]
 
 [node name="level_2" type="Node2D"]
@@ -65,14 +66,14 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array(327681, 2, 0, 196609, 2, 0, 131073, 2, 0)
+layer_2/tile_data = PackedInt32Array(327681, 5, 0, 196609, 5, 0, 131073, 5, 0)
 layer_3/name = "rat_obstacles"
 layer_3/enabled = true
 layer_3/modulate = Color(1, 1, 1, 1)
 layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
 layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array(131073, 2, 0, 196609, 2, 0, 327681, 2, 0)
+layer_3/tile_data = PackedInt32Array(131073, 5, 0, 196609, 5, 0, 327681, 5, 0)
 layer_4/name = "bird_obstacles"
 layer_4/enabled = true
 layer_4/modulate = Color(1, 1, 1, 1)
@@ -202,6 +203,81 @@ texture = ExtResource("12_jr5s2")
 centered = false
 hframes = 2
 frame = 1
+
+[node name="Casa" type="Sprite2D" parent="TileMap"]
+position = Vector2(3.99989, 270)
+scale = Vector2(0.992187, 0.992187)
+texture = ExtResource("16_ubhh1")
+
+[node name="Casa2" type="Sprite2D" parent="TileMap"]
+position = Vector2(1020, 258)
+scale = Vector2(0.992187, 0.992187)
+texture = ExtResource("16_ubhh1")
+
+[node name="Casa3" type="Sprite2D" parent="TileMap"]
+position = Vector2(2044, 258)
+scale = Vector2(0.992187, 0.992187)
+texture = ExtResource("16_ubhh1")
+
+[node name="Casa6" type="Sprite2D" parent="TileMap"]
+position = Vector2(0, 3360)
+scale = Vector2(0.984436, 0.984436)
+texture = ExtResource("16_ubhh1")
+vframes = 2
+
+[node name="Casa7" type="Sprite2D" parent="TileMap"]
+position = Vector2(1024, 3360)
+scale = Vector2(0.984436, 0.984436)
+texture = ExtResource("16_ubhh1")
+vframes = 2
+
+[node name="Casa8" type="Sprite2D" parent="TileMap"]
+position = Vector2(2048, 3360)
+scale = Vector2(0.984436, 0.984436)
+texture = ExtResource("16_ubhh1")
+vframes = 2
+
+[node name="Casa9" type="Sprite2D" parent="TileMap"]
+position = Vector2(3072, 3360)
+scale = Vector2(0.984436, 0.984436)
+texture = ExtResource("16_ubhh1")
+vframes = 2
+
+[node name="Casa10" type="Sprite2D" parent="TileMap"]
+position = Vector2(4096, 3360)
+scale = Vector2(0.984436, 0.984436)
+texture = ExtResource("16_ubhh1")
+vframes = 2
+
+[node name="Casa12" type="Sprite2D" parent="TileMap"]
+position = Vector2(-1024, 776)
+scale = Vector2(0.984436, 0.984436)
+texture = ExtResource("16_ubhh1")
+
+[node name="Casa13" type="Sprite2D" parent="TileMap"]
+position = Vector2(-1024, 1912)
+scale = Vector2(0.984436, 0.984436)
+texture = ExtResource("16_ubhh1")
+
+[node name="Casa14" type="Sprite2D" parent="TileMap"]
+position = Vector2(-1024, 2560)
+scale = Vector2(0.984436, 0.984436)
+texture = ExtResource("16_ubhh1")
+
+[node name="Casa15" type="Sprite2D" parent="TileMap"]
+position = Vector2(-1024, 3360)
+scale = Vector2(0.984436, 0.984436)
+texture = ExtResource("16_ubhh1")
+
+[node name="Casa4" type="Sprite2D" parent="TileMap"]
+position = Vector2(3068, 258)
+scale = Vector2(0.992187, 0.992187)
+texture = ExtResource("16_ubhh1")
+
+[node name="Casa5" type="Sprite2D" parent="TileMap"]
+position = Vector2(4092, 258)
+scale = Vector2(0.992187, 0.992187)
+texture = ExtResource("16_ubhh1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
