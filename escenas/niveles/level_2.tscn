@@ -33,7 +33,7 @@ anchor_mode = 0
 position = Vector2(320, 64)
 scale = Vector2(0.125, 0.125)
 script = ExtResource("1_hg1id")
-basura = NodePath("../TileMap/Block")
+basura = NodePath("../TileMap/Basura")
 cable = NodePath("")
 tendido = [NodePath(""), NodePath(""), NodePath("")]
 grid = NodePath("../TileMap")
@@ -97,12 +97,12 @@ disp = Vector2(-0.5, -0.5)
 grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
 
-[node name="Block" type="Sprite2D" parent="TileMap"]
+[node name="Basura" type="Sprite2D" parent="TileMap"]
 position = Vector2(1024, 1024)
 texture = ExtResource("10_xhw13")
 centered = false
 
-[node name="Sprite2D" type="Sprite2D" parent="TileMap/Block"]
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/Basura"]
 scale = Vector2(2.5, 2.5)
 texture = SubResource("AtlasTexture_qwf3e")
 centered = false
