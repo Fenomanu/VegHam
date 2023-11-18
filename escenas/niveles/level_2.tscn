@@ -1,13 +1,13 @@
 [gd_scene load_steps=19 format=3 uid="uid://bykkn3rnpphp0"]
 
-[ext_resource type="Script" path="res://scripts/levels/test_movables.gd" id="1_hg1id"]
+[ext_resource type="Script" path="res://scripts/levels/level2.gd" id="1_d5d0k"]
+[ext_resource type="Script" path="res://escenas/niveles/CharacterCam.gd" id="1_lvgo7"]
 [ext_resource type="Script" path="res://scripts/TimeManager.gd" id="2_frijf"]
 [ext_resource type="TileSet" uid="uid://bbrbh1tmn88so" path="res://test/rodrigo_test/test_env.tres" id="3_gjeu7"]
 [ext_resource type="Script" path="res://scripts/Grid.gd" id="4_6kln6"]
 [ext_resource type="Texture2D" uid="uid://bvfjvuajg5dn2" path="res://arte/carretera.png" id="5_0pdab"]
 [ext_resource type="Texture2D" uid="uid://db6bw0pcu6fgd" path="res://test/rodrigo_test/tex.png" id="6_b0fsm"]
-[ext_resource type="PackedScene" path="res://recursos/personaje/human.tscn" id="7_2dy7n"]
-[ext_resource type="PackedScene" path="res://recursos/personaje/rat.tscn" id="8_jdttc"]
+[ext_resource type="PackedScene" uid="uid://cbc3vlyvj0jbh" path="res://recursos/personaje/human.tscn" id="7_2dy7n"]
 [ext_resource type="Texture2D" uid="uid://bdm3p5l7k6wfk" path="res://test/rodrigo_test/estrella.png" id="10_xhw13"]
 [ext_resource type="Texture2D" uid="uid://cc3taxhebvwhc" path="res://test/rodrigo_test/round_nodetailsOutline.png" id="11_hr1o7"]
 [ext_resource type="Script" path="res://escenas/niveles/CharSelector.gd" id="12_0xc1p"]
@@ -27,21 +27,20 @@ filter_clip = true
 [node name="level_2" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
+script = ExtResource("1_lvgo7")
 
-[node name="MovableObjs" type="Node2D" parent="." node_paths=PackedStringArray("basura", "tendido", "grid", "players")]
+[node name="MovableObjs" type="Node2D" parent="." node_paths=PackedStringArray("basura", "metas", "grid", "players")]
 position = Vector2(320, 64)
 scale = Vector2(0.125, 0.125)
-script = ExtResource("1_hg1id")
+script = ExtResource("1_d5d0k")
 basura = NodePath("../TileMap/Basura")
-cable = NodePath("")
-tendido = [null, null, null]
+metas = [NodePath("../TileMap/meta 1"), NodePath("../TileMap/meta 2")]
 grid = NodePath("../TileMap")
-players = [NodePath("../TileMap/rat"), NodePath("../TileMap/Human"), null]
+players = [NodePath("../TileMap/Human")]
 
 [node name="TimeManager" type="Node2D" parent="." node_paths=PackedStringArray("players")]
 script = ExtResource("2_frijf")
-players = [NodePath("../TileMap/Human"), NodePath("../TileMap/rat"), null]
+players = [NodePath("../TileMap/Human")]
 
 [node name="TileMap" type="TileMap" parent="." node_paths=PackedStringArray("movables")]
 position = Vector2(320, 64)
@@ -84,19 +83,24 @@ arrow = ExtResource("5_0pdab")
 selected = ExtResource("6_b0fsm")
 movables = NodePath("../MovableObjs")
 
-[node name="Human" parent="TileMap" node_paths=PackedStringArray("grid", "movables") instance=ExtResource("7_2dy7n")]
+[node name="Human" parent="TileMap" node_paths=PackedStringArray("grid", "movables", "time_manager") instance=ExtResource("7_2dy7n")]
 z_index = 10
-position = Vector2(0, 1024)
+position = Vector2(0, 512)
 disp = Vector2(-0.5, 0.5)
 grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
+time_manager = NodePath("../../TimeManager")
 level = null
 
-[node name="rat" parent="TileMap" node_paths=PackedStringArray("grid", "movables") instance=ExtResource("8_jdttc")]
-position = Vector2(4608, 512)
-disp = Vector2(-0.5, -0.5)
-grid = NodePath("..")
-movables = NodePath("../../MovableObjs")
+[node name="meta 1" type="Sprite2D" parent="TileMap"]
+position = Vector2(512, 2560)
+texture = ExtResource("10_xhw13")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/meta 1"]
+scale = Vector2(2.5, 2.5)
+texture = SubResource("AtlasTexture_qwf3e")
+centered = false
 
 [node name="Basura" type="Sprite2D" parent="TileMap"]
 position = Vector2(1024, 1024)
@@ -108,17 +112,30 @@ scale = Vector2(2.5, 2.5)
 texture = SubResource("AtlasTexture_qwf3e")
 centered = false
 
+[node name="meta 2" type="Sprite2D" parent="TileMap"]
+position = Vector2(1024, 2560)
+texture = ExtResource("10_xhw13")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/meta 2"]
+scale = Vector2(2.5, 2.5)
+texture = SubResource("AtlasTexture_qwf3e")
+centered = false
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CharSelector" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("buttons", "characters")]
+[node name="CharSelector" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("cam", "buttons", "characters")]
 offset_right = 1024.0
 offset_bottom = 3080.0
 scale = Vector2(0.157093, 0.157093)
 script = ExtResource("12_0xc1p")
+starts = 1
+cam = NodePath("../../Camera2D")
 buttons = [NodePath("Rat"), NodePath("Human"), NodePath("Bird")]
-characters = [NodePath("../../TileMap/rat"), NodePath("../../TileMap/Human"), null]
+characters = [NodePath(""), NodePath("../../TileMap/Human"), null]
 
 [node name="Rat" type="Button" parent="CanvasLayer/CharSelector"]
+visible = false
 layout_mode = 2
 theme_override_colors/icon_normal_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
@@ -145,6 +162,7 @@ toggle_mode = true
 icon = ExtResource("13_67ww4")
 
 [node name="Bird" type="Button" parent="CanvasLayer/CharSelector"]
+visible = false
 layout_mode = 2
 theme_override_colors/icon_normal_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)

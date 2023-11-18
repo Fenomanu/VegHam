@@ -31,11 +31,12 @@ position = Vector2(884, 116)
 scale = Vector2(1, 1.04236)
 script = ExtResource("1_0v30c")
 
-[node name="MovableObjs" type="Node2D" parent="." node_paths=PackedStringArray("basuras", "grid", "players")]
+[node name="MovableObjs" type="Node2D" parent="." node_paths=PackedStringArray("basuras", "metas", "grid", "players")]
 position = Vector2(320, 64)
 scale = Vector2(0.125, 0.125)
 script = ExtResource("2_pg0ea")
 basuras = [NodePath("../TileMap/contenedor 1"), NodePath("../TileMap/contenedor 2"), NodePath("../TileMap/Contenedor 3")]
+metas = [NodePath("../TileMap/meta 1"), NodePath("../TileMap/meta 2"), NodePath("../TileMap/meta 3")]
 grid = NodePath("../TileMap")
 players = [NodePath("../TileMap/Human")]
 
@@ -92,6 +93,45 @@ grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
 time_manager = NodePath("../../TimeManager")
 level = null
+
+[node name="meta 3" type="Sprite2D" parent="TileMap"]
+position = Vector2(2560, 1024)
+texture = ExtResource("9_ck2vu")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/meta 3"]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("10_53fyc")
+centered = false
+hframes = 6
+vframes = 6
+frame = 1
+
+[node name="meta 2" type="Sprite2D" parent="TileMap"]
+position = Vector2(2560, 512)
+texture = ExtResource("9_ck2vu")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/meta 2"]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("10_53fyc")
+centered = false
+hframes = 6
+vframes = 6
+frame = 1
+
+[node name="meta 1" type="Sprite2D" parent="TileMap"]
+position = Vector2(2560, 0)
+texture = ExtResource("9_ck2vu")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/meta 1"]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("10_53fyc")
+centered = false
+hframes = 6
+vframes = 6
+frame = 1
 
 [node name="contenedor 1" type="Sprite2D" parent="TileMap"]
 position = Vector2(2048, 0)
