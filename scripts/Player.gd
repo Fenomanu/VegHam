@@ -11,6 +11,7 @@ enum EClass {RAT, HUMAN, BIRD}
 @export var level : int = 0
 
 var distance : int = 1
+var winner: bool = false
 var type : EClass
 var obstacle_layers = []
 
@@ -26,6 +27,13 @@ var historial = []
 var prev_path = []
 var prev_selected = []
 var prev_target
+
+
+var avoid_update : bool = false
+
+
+func is_winning():
+	return len(historial) > 0 and historial[-1].type == EAction.WIN
 
 
 func pause(p):
@@ -51,19 +59,27 @@ func _process(delta):
 	var pos = grid.local_to_map(mouse)
 	var mov_pos = Vector3i(pos.x, pos.y, level)
 	
-	if draw_path(pos) and Input.is_action_just_pressed("Action"):
-		move()
-		time_manager.next_step(self)
-	elif Input.is_action_just_pressed("Back"):
+	if Input.is_action_just_pressed("Back"):
 		back()
 		time_manager.time_back(self)
+	elif winner:
+		return
+	elif draw_path(pos) and Input.is_action_just_pressed("Action"):
+		move()
+		time_manager.next_step(self)
 	elif mov_pos in interactables and Input.is_action_just_pressed("Action"):
+		avoid_update = false
 		interact(interactables[mov_pos], mov_pos)
-		update_position(gridPosition)
+		if not avoid_update:
+			update_position(gridPosition)
 		time_manager.next_step(self)
 	elif Input.is_action_just_pressed("Pass"):
 		historial.append({"type": EAction.PASS})
 		time_manager.next_step(self)
+
+
+func v3i_xy(v: Vector3i):
+	return Vector2i(v.x, v.y)
 
 
 func time_step(action):
@@ -71,6 +87,11 @@ func time_step(action):
 		update_position(action.path[-1])
 	elif action.type == EAction.PASS:
 		pass
+	elif action.type == EAction.WIN:
+		winner = true
+		clear()
+		avoid_update = true
+		# Set win sprite
 	else:
 		return false
 	return true
@@ -81,13 +102,27 @@ func time_back(action):
 		update_position(action.path[0])
 	elif action.type == EAction.PASS:
 		pass
+	elif action.type == EAction.WIN:
+		winner = false
+		if not paused:
+			update_position(gridPosition)
+		# Quit win sprite
 	else:
 		return false
 	return true
 
 
 func interact(obj, position):
-	pass
+	if obj.type == MovableObjs.EMovable.WIN:
+		var action = {
+			"type": EAction.WIN,
+			"obj": obj,
+			"position": position,
+			"gridpos": gridPosition
+		}
+		time_step(action)
+		historial.append(action)
+	return false
 
 
 func update_position(pos):
@@ -108,6 +143,7 @@ func update_position(pos):
 
 
 func clear():
+	print("clear")
 	grid.clear_path(prev_path)
 	grid.clear_path(prev_selected)
 

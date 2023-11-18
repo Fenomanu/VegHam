@@ -4,6 +4,7 @@ extends MovableObjs
 @export var basura : Sprite2D
 @export var cable : Sprite2D
 @export var tendido : Array[Sprite2D]
+@export var pipas : Sprite2D
 
 
 func _ready():
@@ -33,6 +34,13 @@ func _ready():
 			"can_interact": [Player.EClass.RAT],
 			"sprite": cable,
 			"connected_to": tendidoRefs
+		}
+	
+	interactables[[0, pipas.position]] = {
+			"type": EMovable.WIN, 
+			"block": true,
+			"can_interact": [Player.EClass.HUMAN],
+			"sprite": pipas
 		}
 		
 	super._ready()

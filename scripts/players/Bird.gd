@@ -10,4 +10,6 @@ func _ready():
 
 
 func interact(obj, position):
-	pass
+	if super.interact(obj, position):
+		return true
+	return false

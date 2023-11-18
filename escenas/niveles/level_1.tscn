@@ -100,6 +100,7 @@ disp = Vector2(-0.5, 0.5)
 grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
 time_manager = NodePath("../../TimeManager")
+level = null
 
 [node name="rat" parent="TileMap" node_paths=PackedStringArray("grid", "movables", "time_manager") instance=ExtResource("8_mit2j")]
 position = Vector2(4608, 512)

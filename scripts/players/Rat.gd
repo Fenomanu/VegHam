@@ -12,6 +12,9 @@ func _ready():
 
 
 func interact(obj, position):
+	if super.interact(obj, position):
+		return true
+	
 	if obj.type == MovableObjs.EMovable.CONTROL:
 		var action = {
 			"type": EAction.INTERACT, 
@@ -22,6 +25,9 @@ func interact(obj, position):
 			"type": EAction.INTERACT, 
 			"obj": obj
 		})
+	else:
+		return false
+	return true
 
 
 func time_step(action):
