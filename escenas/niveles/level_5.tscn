@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bimscy848e4ts"]
+[gd_scene load_steps=28 format=3 uid="uid://bimscy848e4ts"]
 
 [ext_resource type="Script" path="res://escenas/niveles/CharacterCam.gd" id="1_hxps6"]
 [ext_resource type="Script" path="res://scripts/TimeManager.gd" id="2_8isbd"]
@@ -21,9 +21,12 @@
 [ext_resource type="StyleBox" uid="uid://4k12n2b7w3tx" path="res://arte/sprites/ui/level/pressed.tres" id="14_xglvv"]
 [ext_resource type="Texture2D" uid="uid://rv1u5pbwqt7w" path="res://arte/arbol.png" id="15_jykvn"]
 [ext_resource type="Texture2D" uid="uid://bv2spd2jnopti" path="res://arte/sprites/anna_dialogo.png" id="15_lfhos"]
-[ext_resource type="Texture2D" uid="uid://c183pw0esyplm" path="res://arte/poste_roto.png" id="16_2ro01"]
 [ext_resource type="Texture2D" uid="uid://durxojtc1f7rs" path="res://arte/sprites/sonya_dialogo.png" id="16_j6gsc"]
 [ext_resource type="Texture2D" uid="uid://ctecnqs4fntme" path="res://arte/sprites/ruben_dialogo.png" id="17_55ga2"]
+[ext_resource type="Texture2D" uid="uid://ixvkeib3awch" path="res://arte/sprites/poste_pajaro.png" id="17_phwoi"]
+[ext_resource type="Texture2D" uid="uid://3tqvdkq505ao" path="res://arte/sprites/CASA.png" id="18_68uct"]
+[ext_resource type="Texture2D" uid="uid://bw8ja8plsh8qm" path="res://arte/sprites/CASA_2.png" id="19_jxlis"]
+[ext_resource type="Texture2D" uid="uid://bhx7p6320e7mp" path="res://arte/sprites/CASA_3.png" id="20_ksqvf"]
 
 [node name="level_2" type="Node2D"]
 
@@ -61,21 +64,21 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(327678, 2, 0, 262142, 2, 0, 393214, 2, 0, 458751, 2, 0, 393216, 2, 0, 393217, 2, 0, 393218, 2, 0, 393219, 2, 0, 65538, 2, 0, 65539, 2, 0, 65540, 2, 0, 65541, 2, 0, 65542, 2, 0, 393220, 2, 0, 393221, 2, 0, 393222, 2, 0, 196606, 2, 0, 65543, 2, 0, 393223, 2, 0, 131071, 2, 0, 65536, 2, 0, 65537, 2, 0, 327682, 9, 1, 131064, 2, 0)
+layer_1/tile_data = PackedInt32Array(327678, 2, 0, 262142, 2, 0, 393214, 2, 0, 458751, 2, 0, 393216, 2, 0, 393217, 2, 0, 393218, 2, 0, 393219, 2, 0, 65539, 6, 2, 65540, 65542, 2, 393220, 2, 0, 393221, 2, 0, 393222, 2, 0, 196606, 2, 0, 65543, 6, 2, 393223, 2, 0, 131071, 2, 0, 65536, 2, 0, 327682, 9, 1, 131064, 2, 0, 3, 6, 1, 4, 65542, 1, -65533, 6, 0, -65532, 65542, 0, 65544, 65542, 2, 7, 6, 1, 8, 65542, 1, -65529, 6, 0, -65528, 65542, 0)
 layer_2/name = "human_obstacles"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array(131074, 2, 0)
+layer_2/tile_data = PackedInt32Array(131074, 5, 0)
 layer_3/name = "rat_obstacles"
 layer_3/enabled = true
 layer_3/modulate = Color(1, 1, 1, 1)
 layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
 layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array(131074, 2, 0)
+layer_3/tile_data = PackedInt32Array(131074, 5, 0)
 layer_4/name = "bird_obstacles"
 layer_4/enabled = true
 layer_4/modulate = Color(1, 1, 1, 1)
@@ -191,27 +194,90 @@ texture = ExtResource("13_h0cep")
 
 [node name="cable1" type="Sprite2D" parent="TileMap"]
 position = Vector2(2048, 1024)
-texture = ExtResource("16_2ro01")
+texture = ExtResource("17_phwoi")
 centered = false
-hframes = 4
+vframes = 3
 
 [node name="cable2" type="Sprite2D" parent="TileMap"]
 position = Vector2(2048, 1536)
-texture = ExtResource("16_2ro01")
+texture = ExtResource("17_phwoi")
 centered = false
-hframes = 4
+vframes = 3
+frame = 1
 
 [node name="cable3" type="Sprite2D" parent="TileMap"]
 position = Vector2(2048, 2048)
-texture = ExtResource("16_2ro01")
+texture = ExtResource("17_phwoi")
 centered = false
-hframes = 4
+vframes = 3
+frame = 1
+
+[node name="Casa15" type="Sprite2D" parent="TileMap"]
+position = Vector2(11.9922, 266.012)
+scale = Vector2(0.976578, 0.976578)
+texture = ExtResource("18_68uct")
+
+[node name="Casa16" type="Sprite2D" parent="TileMap"]
+position = Vector2(-984, 664)
+scale = Vector2(0.976578, 0.976578)
+texture = ExtResource("19_jxlis")
+
+[node name="Casa17" type="Sprite2D" parent="TileMap"]
+position = Vector2(-992, 1488)
+scale = Vector2(0.976578, 0.976578)
+texture = ExtResource("18_68uct")
+
+[node name="Casa18" type="Sprite2D" parent="TileMap"]
+position = Vector2(-1016, 2632)
+scale = Vector2(0.976578, 0.976578)
+texture = ExtResource("19_jxlis")
+
+[node name="Casa19" type="Sprite2D" parent="TileMap"]
+position = Vector2(-1000, 3664)
+scale = Vector2(0.976578, 0.976578)
+texture = ExtResource("18_68uct")
+
+[node name="Casa20" type="Sprite2D" parent="TileMap"]
+position = Vector2(-16, 3672)
+scale = Vector2(0.976578, 0.976578)
+texture = ExtResource("20_ksqvf")
+
+[node name="Casa25" type="Sprite2D" parent="TileMap"]
+position = Vector2(1024, 256)
+scale = Vector2(0.976578, 0.976578)
+texture = ExtResource("20_ksqvf")
+
+[node name="Casa21" type="Sprite2D" parent="TileMap"]
+position = Vector2(1968, 3688)
+scale = Vector2(0.976578, 0.976578)
+texture = ExtResource("18_68uct")
+
+[node name="Casa22" type="Sprite2D" parent="TileMap"]
+position = Vector2(984, 3688)
+scale = Vector2(0.976578, 0.976578)
+texture = ExtResource("19_jxlis")
+
+[node name="Casa26" type="Sprite2D" parent="TileMap"]
+position = Vector2(3072, 272)
+scale = Vector2(0.976578, 0.976578)
+texture = ExtResource("19_jxlis")
+
+[node name="Casa23" type="Sprite2D" parent="TileMap"]
+position = Vector2(2944, 3688)
+scale = Vector2(0.976578, 0.976578)
+texture = ExtResource("18_68uct")
+
+[node name="Casa24" type="Sprite2D" parent="TileMap"]
+position = Vector2(3936, 3640)
+scale = Vector2(0.976578, 0.976578)
+texture = ExtResource("19_jxlis")
 
 [node name="cable4" type="Sprite2D" parent="TileMap"]
 position = Vector2(2048, 2560)
-texture = ExtResource("16_2ro01")
+texture = ExtResource("17_phwoi")
 centered = false
-hframes = 4
+vframes = 3
+frame = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
