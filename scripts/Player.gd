@@ -2,7 +2,7 @@ extends Node2D
 class_name Player
 
 enum EAction {MOVE}
-enum EClass {RAT, HUMAN, BIRD}
+enum EClass {RAT=0, HUMAN=1, BIRD=2}
 
 @export var disp : Vector2
 @export var grid : Grid
