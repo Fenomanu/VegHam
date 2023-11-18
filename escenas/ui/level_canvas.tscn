@@ -62,7 +62,7 @@ scale = Vector2(0.12, 0.12)
 pivot_offset = Vector2(20, 20)
 script = ExtResource("1_as2xr")
 button_sound = NodePath("../ButtonSound")
-buttons = [null, null, null]
+buttons = [NodePath("HBoxContainer/Rat"), NodePath("HBoxContainer2/Human"), NodePath("HBoxContainer3/Bird")]
 characters = [null, null, null]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CharSelector"]

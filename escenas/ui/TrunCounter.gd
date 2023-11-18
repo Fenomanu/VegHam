@@ -1,4 +1,5 @@
 extends Control
+class_name TurnCounter
 
 @export var next_scene : PackedScene
 @export var sliders : Array[Slider]
@@ -26,13 +27,13 @@ func init_turns(max_turns : int):
 func set_turns_left(player : Player.EClass, tl : int):
 	if player == Player.EClass.RAT && scores[0] != null:
 		scores[0].text = str(tl)
-		sliders[0].value = float(max_ts - tl)/max_ts
+		sliders[0].value = 100*float(max_ts - tl)/max_ts
 	elif player == Player.EClass.HUMAN && scores[1] != null:
 		scores[1].text = str(tl)
-		sliders[1].value = float(max_ts - tl)/max_ts
+		sliders[1].value = 100*float(max_ts - tl)/max_ts
 	elif player == Player.EClass.BIRD && scores[2] != null:
 		scores[2].text = str(tl)
-		sliders[2].value = float(max_ts - tl)/max_ts
+		sliders[2].value = 100*float(max_ts - tl)/max_ts
 
 func next_level():
 	get_tree().change_scene_to_packed(next_scene)

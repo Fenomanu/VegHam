@@ -1,6 +1,5 @@
-[gd_scene load_steps=20 format=3 uid="uid://ccmty86iu7x0w"]
+[gd_scene load_steps=15 format=3 uid="uid://ccmty86iu7x0w"]
 
-[ext_resource type="Script" path="res://escenas/niveles/CharacterCam.gd" id="1_4onqo"]
 [ext_resource type="Script" path="res://scripts/levels/level3.gd" id="1_w8v7u"]
 [ext_resource type="Script" path="res://scripts/TimeManager.gd" id="2_eu3ga"]
 [ext_resource type="TileSet" uid="uid://bbrbh1tmn88so" path="res://test/rodrigo_test/test_env.tres" id="3_shum1"]
@@ -11,13 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bqhcxug7fulh0" path="res://recursos/personaje/rat.tscn" id="8_2mhbq"]
 [ext_resource type="Texture2D" uid="uid://bdm3p5l7k6wfk" path="res://test/rodrigo_test/estrella.png" id="9_gkcvj"]
 [ext_resource type="Texture2D" uid="uid://cc3taxhebvwhc" path="res://test/rodrigo_test/round_nodetailsOutline.png" id="10_oijbx"]
-[ext_resource type="Script" path="res://escenas/niveles/CharSelector.gd" id="11_cblrg"]
-[ext_resource type="StyleBox" uid="uid://d5lxoxe5oy5h" path="res://arte/sprites/ui/level/normal.tres" id="12_hf78c"]
-[ext_resource type="StyleBox" uid="uid://vg2dxmwu551w" path="res://arte/sprites/ui/level/hover.tres" id="13_xmrq3"]
-[ext_resource type="StyleBox" uid="uid://4k12n2b7w3tx" path="res://arte/sprites/ui/level/pressed.tres" id="14_cwod6"]
-[ext_resource type="Texture2D" uid="uid://bv2spd2jnopti" path="res://arte/sprites/anna_dialogo.png" id="15_yldac"]
-[ext_resource type="Texture2D" uid="uid://durxojtc1f7rs" path="res://arte/sprites/sonya_dialogo.png" id="16_svl67"]
-[ext_resource type="Texture2D" uid="uid://ctecnqs4fntme" path="res://arte/sprites/ruben_dialogo.png" id="17_aq8de"]
+[ext_resource type="PackedScene" uid="uid://ns62e6jxo6xl" path="res://escenas/ui/level_canvas.tscn" id="11_aujgq"]
+[ext_resource type="PackedScene" uid="uid://dna7hrbug4njv" path="res://escenas/niveles/level_4.tscn" id="12_nk144"]
+[ext_resource type="PackedScene" uid="uid://bqmqhqssqu2f3" path="res://escenas/props/character_cam.tscn" id="12_pssbr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qwf3e"]
 atlas = ExtResource("10_oijbx")
@@ -26,9 +21,6 @@ margin = Rect2(30, 30, 60, 60)
 filter_clip = true
 
 [node name="level_2" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("1_4onqo")
 
 [node name="MovableObjs" type="Node2D" parent="." node_paths=PackedStringArray("basura", "meta_rata", "metas", "grid", "players")]
 position = Vector2(320, 64)
@@ -40,9 +32,11 @@ metas = [NodePath("../TileMap/meta 1"), NodePath("../TileMap/meta 2"), NodePath(
 grid = NodePath("../TileMap")
 players = [NodePath("../TileMap/rat"), NodePath("../TileMap/Human")]
 
-[node name="TimeManager" type="Node2D" parent="." node_paths=PackedStringArray("players")]
+[node name="TimeManager" type="Node2D" parent="." node_paths=PackedStringArray("players", "turnCounter")]
 script = ExtResource("2_eu3ga")
 players = [NodePath("../TileMap/Human"), NodePath("../TileMap/rat")]
+turnCounter = NodePath("../CanvasLayer/TrunCounter")
+maxTurns = 10
 
 [node name="TileMap" type="TileMap" parent="." node_paths=PackedStringArray("movables")]
 position = Vector2(320, 64)
@@ -160,58 +154,21 @@ scale = Vector2(2.5, 2.5)
 texture = SubResource("AtlasTexture_qwf3e")
 centered = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" parent="." instance=ExtResource("11_aujgq")]
 
-[node name="CharSelector" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("cam", "buttons", "characters")]
-offset_right = 1024.0
-offset_bottom = 3080.0
-scale = Vector2(0.157093, 0.157093)
-script = ExtResource("11_cblrg")
-starts = 1
-cam = NodePath("../../Camera2D")
-buttons = [NodePath("Rat"), NodePath("Human"), NodePath("Bird")]
+[node name="TrunCounter" parent="CanvasLayer" index="0"]
+next_scene = ExtResource("12_nk144")
+
+[node name="CharSelector" parent="CanvasLayer" index="2" node_paths=PackedStringArray("cam", "characters")]
+cam = NodePath("../../CharacterCam")
 characters = [NodePath("../../TileMap/rat"), NodePath("../../TileMap/Human"), null]
 
-[node name="Human" type="Button" parent="CanvasLayer/CharSelector"]
-layout_mode = 2
-theme_override_colors/icon_normal_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_hover_color = Color(0.882353, 0.882353, 0.882353, 1)
-theme_override_colors/icon_focus_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_styles/normal = ExtResource("12_hf78c")
-theme_override_styles/hover = ExtResource("13_xmrq3")
-theme_override_styles/pressed = ExtResource("14_cwod6")
-theme_override_styles/focus = ExtResource("12_hf78c")
-toggle_mode = true
-icon = ExtResource("16_svl67")
-
-[node name="Rat" type="Button" parent="CanvasLayer/CharSelector"]
-layout_mode = 2
-theme_override_colors/icon_normal_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_hover_color = Color(0.882353, 0.882353, 0.882353, 1)
-theme_override_colors/icon_focus_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_styles/normal = ExtResource("12_hf78c")
-theme_override_styles/hover = ExtResource("13_xmrq3")
-theme_override_styles/pressed = ExtResource("14_cwod6")
-theme_override_styles/focus = ExtResource("12_hf78c")
-toggle_mode = true
-icon = ExtResource("15_yldac")
-
-[node name="Bird" type="Button" parent="CanvasLayer/CharSelector"]
+[node name="HBoxContainer3" parent="CanvasLayer/CharSelector" index="2"]
 visible = false
-layout_mode = 2
-theme_override_colors/icon_normal_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_hover_color = Color(0.882353, 0.882353, 0.882353, 1)
-theme_override_colors/icon_focus_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_styles/normal = ExtResource("12_hf78c")
-theme_override_styles/hover = ExtResource("13_xmrq3")
-theme_override_styles/pressed = ExtResource("14_cwod6")
-theme_override_styles/focus = ExtResource("12_hf78c")
-toggle_mode = true
-icon = ExtResource("17_aq8de")
 
-[connection signal="pressed" from="CanvasLayer/CharSelector/Human" to="CanvasLayer/CharSelector" method="_on_human_pressed"]
-[connection signal="pressed" from="CanvasLayer/CharSelector/Rat" to="CanvasLayer/CharSelector" method="_on_rat_pressed"]
-[connection signal="pressed" from="CanvasLayer/CharSelector/Bird" to="CanvasLayer/CharSelector" method="_on_bird_pressed"]
+[node name="birdslider" parent="CanvasLayer/Sliders" index="2"]
+visible = false
+
+[node name="CharacterCam" parent="." instance=ExtResource("12_pssbr")]
+
+[editable path="CanvasLayer"]

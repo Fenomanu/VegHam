@@ -16,6 +16,7 @@ var type : EClass
 var obstacle_layers = []
 
 var paused : bool = false
+var max_turn: int = 0
 
 var paths = {}
 var interactables = {}
@@ -62,7 +63,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("Back"):
 		back()
 		time_manager.time_back(self)
-	elif winner:
+	elif winner or len(historial) == max_turn:
 		return
 	elif draw_path(pos) and Input.is_action_just_pressed("Action"):
 		move()
