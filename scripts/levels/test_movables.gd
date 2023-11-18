@@ -13,3 +13,4 @@ func _ready():
 			"can_interact": [Player.EClass.HUMAN]
 		}
 	}
+	super._ready()
