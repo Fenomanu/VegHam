@@ -2,13 +2,13 @@
 
 [ext_resource type="TileSet" uid="uid://bbrbh1tmn88so" path="res://test/rodrigo_test/test_env.tres" id="1_7odaj"]
 [ext_resource type="Script" path="res://scripts/Grid.gd" id="2_5xvll"]
-[ext_resource type="PackedScene" uid="uid://cbc3vlyvj0jbh" path="res://recursos/personaje/human.tscn" id="2_f4gre"]
+[ext_resource type="PackedScene" path="res://recursos/personaje/human.tscn" id="2_f4gre"]
 [ext_resource type="Script" path="res://scripts/TimeManager.gd" id="2_w6adb"]
 [ext_resource type="Texture2D" uid="uid://bvfjvuajg5dn2" path="res://arte/carretera.png" id="3_n8yn6"]
 [ext_resource type="Texture2D" uid="uid://db6bw0pcu6fgd" path="res://test/rodrigo_test/tex.png" id="4_5pucm"]
 [ext_resource type="Script" path="res://scripts/levels/test_movables.gd" id="5_422hu"]
-[ext_resource type="PackedScene" uid="uid://btd5imn3paf28" path="res://recursos/personaje/bird.tscn" id="6_dkov2"]
-[ext_resource type="PackedScene" uid="uid://bqhcxug7fulh0" path="res://recursos/personaje/rat.tscn" id="6_ihlly"]
+[ext_resource type="PackedScene" path="res://recursos/personaje/bird.tscn" id="6_dkov2"]
+[ext_resource type="PackedScene" path="res://recursos/personaje/rat.tscn" id="6_ihlly"]
 [ext_resource type="Texture2D" uid="uid://bdm3p5l7k6wfk" path="res://test/rodrigo_test/estrella.png" id="8_j0o54"]
 [ext_resource type="Texture2D" uid="uid://cc3taxhebvwhc" path="res://test/rodrigo_test/round_nodetailsOutline.png" id="10_88g0o"]
 [ext_resource type="Texture2D" uid="uid://dv0oglgvvre5" path="res://arte/sprites/PIPA.png" id="12_wpng8"]
@@ -29,14 +29,13 @@ margin = Rect2(30, 30, 60, 60)
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="MovableObjs" type="Node2D" parent="." node_paths=PackedStringArray("basura", "cable", "tendido", "pipas", "grid", "players")]
+[node name="MovableObjs" type="Node2D" parent="." node_paths=PackedStringArray("basura", "cable", "tendido", "grid", "players")]
 position = Vector2(320, 64)
 scale = Vector2(0.125, 0.125)
 script = ExtResource("5_422hu")
 basura = NodePath("../TileMap/Block")
 cable = NodePath("../TileMap/Cable")
 tendido = [NodePath("../TileMap/Tendido"), NodePath("../TileMap/Tendido2"), NodePath("../TileMap/Tendido3")]
-pipas = NodePath("../TileMap/Sprite2D")
 grid = NodePath("../TileMap")
 players = [NodePath("../TileMap/rat"), NodePath("../TileMap/Human"), NodePath("../TileMap/bird")]
 
