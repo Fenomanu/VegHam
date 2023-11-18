@@ -7,9 +7,9 @@
 [ext_resource type="Script" path="res://scripts/Grid.gd" id="4_owohy"]
 [ext_resource type="Texture2D" uid="uid://bvfjvuajg5dn2" path="res://arte/carretera.png" id="5_bros8"]
 [ext_resource type="Texture2D" uid="uid://db6bw0pcu6fgd" path="res://test/rodrigo_test/tex.png" id="6_rtbjj"]
-[ext_resource type="PackedScene" path="res://recursos/personaje/human.tscn" id="7_xp2tf"]
-[ext_resource type="PackedScene" path="res://recursos/personaje/rat.tscn" id="8_mit2j"]
-[ext_resource type="PackedScene" path="res://recursos/personaje/bird.tscn" id="9_unox2"]
+[ext_resource type="PackedScene" uid="uid://cbc3vlyvj0jbh" path="res://recursos/personaje/human.tscn" id="7_xp2tf"]
+[ext_resource type="PackedScene" uid="uid://bqhcxug7fulh0" path="res://recursos/personaje/rat.tscn" id="8_mit2j"]
+[ext_resource type="PackedScene" uid="uid://btd5imn3paf28" path="res://recursos/personaje/bird.tscn" id="9_unox2"]
 [ext_resource type="Texture2D" uid="uid://bdm3p5l7k6wfk" path="res://test/rodrigo_test/estrella.png" id="10_akpix"]
 [ext_resource type="Texture2D" uid="uid://cc3taxhebvwhc" path="res://test/rodrigo_test/round_nodetailsOutline.png" id="11_7xy4l"]
 [ext_resource type="Script" path="res://escenas/niveles/CharSelector.gd" id="12_odfut"]
@@ -93,25 +93,29 @@ arrow = ExtResource("5_bros8")
 selected = ExtResource("6_rtbjj")
 movables = NodePath("../MovableObjs")
 
-[node name="Human" parent="TileMap" node_paths=PackedStringArray("grid", "movables") instance=ExtResource("7_xp2tf")]
+[node name="Human" parent="TileMap" node_paths=PackedStringArray("grid", "movables", "time_manager") instance=ExtResource("7_xp2tf")]
 z_index = 10
 position = Vector2(0, 1024)
 disp = Vector2(-0.5, 0.5)
 grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
+time_manager = NodePath("../../TimeManager")
 
-[node name="rat" parent="TileMap" node_paths=PackedStringArray("grid", "movables") instance=ExtResource("8_mit2j")]
+[node name="rat" parent="TileMap" node_paths=PackedStringArray("grid", "movables", "time_manager") instance=ExtResource("8_mit2j")]
 position = Vector2(4608, 512)
 disp = Vector2(-0.5, -0.5)
 grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
+time_manager = NodePath("../../TimeManager")
 
-[node name="bird" parent="TileMap" node_paths=PackedStringArray("grid", "movables") instance=ExtResource("9_unox2")]
+[node name="bird" parent="TileMap" node_paths=PackedStringArray("grid", "movables", "time_manager") instance=ExtResource("9_unox2")]
 position = Vector2(2048, 3072)
 scale = Vector2(1, 1.00237)
 disp = Vector2(-0.5, -0.5)
 grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
+time_manager = NodePath("../../TimeManager")
+level = 1
 
 [node name="Block" type="Sprite2D" parent="TileMap"]
 position = Vector2(-1536, 2560)

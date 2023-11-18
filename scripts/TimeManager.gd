@@ -10,6 +10,7 @@ var time_step : int = 0
 
 
 func go_to(step: int):
+	print("go to ", step, " ", time_step)
 	while time_step > step:
 		time_back(null)
 	while time_step < step:
@@ -18,11 +19,11 @@ func go_to(step: int):
 
 func next_step(caller):
 	time_step += 1
-	#print("#############")
+	print("###### NEXT #######")
 	for player in players:
-		#print(time_step, player, player != caller, len(player.historial))
+		print(time_step, player, player != caller, len(player.historial))
 		if player != caller and len(player.historial) >= time_step:
-			#print(time_step, player, player.historial[time_step-1])
+			print(time_step, player, player.historial[time_step-1])
 			player.time_step(player.historial[time_step-1])
 
 
@@ -31,7 +32,9 @@ func time_back(caller):
 		return
 	
 	time_step -= 1
+	print("###### BACK #######")
 	for player in players:
+		print(time_step, player, player != caller, len(player.historial))
 		if player != caller and len(player.historial) >= (time_step+1):
 			player.time_back(player.historial[time_step])
 
