@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://bbrbh1tmn88so"]
+[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://bbrbh1tmn88so"]
 
 [ext_resource type="Texture2D" uid="uid://d14uw02yd2tfb" path="res://test/rodrigo_test/tilemap.png" id="1_c47jf"]
 [ext_resource type="Texture2D" uid="uid://ctkvkxektdt1t" path="res://arte/acera.png" id="2_3blwv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dfcyfp5yder5a" path="res://arte/sprites/muro_ladrillo.png" id="5_ry2kn"]
 [ext_resource type="Texture2D" uid="uid://3tqvdkq505ao" path="res://arte/sprites/CASA.png" id="6_vlsps"]
 [ext_resource type="Texture2D" uid="uid://ixvkeib3awch" path="res://arte/sprites/poste_pajaro.png" id="7_w25vx"]
+[ext_resource type="Texture2D" uid="uid://yqdq7tmwcofp" path="res://escenas/niveles/CACA.png" id="8_qkfku"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8r7it"]
 texture = ExtResource("1_c47jf")
@@ -216,6 +217,11 @@ texture = ExtResource("2_3blwv")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uop2j"]
+texture = ExtResource("5_ry2kn")
+texture_region_size = Vector2i(512, 512)
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yj5xa"]
 texture = ExtResource("3_xlo7r")
 texture_region_size = Vector2i(512, 512)
@@ -269,6 +275,11 @@ texture_region_size = Vector2i(512, 512)
 0:5/0 = 0
 1:5/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nntcb"]
+texture = ExtResource("8_qkfku")
+texture_region_size = Vector2i(512, 512)
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omahr"]
 texture = ExtResource("5_8dvc3")
 texture_region_size = Vector2i(512, 512)
@@ -286,3 +297,5 @@ sources/9 = SubResource("TileSetAtlasSource_omahr")
 sources/5 = SubResource("TileSetAtlasSource_bql5o")
 sources/6 = SubResource("TileSetAtlasSource_rst1e")
 sources/7 = SubResource("TileSetAtlasSource_u0a3t")
+sources/8 = SubResource("TileSetAtlasSource_nntcb")
+sources/10 = SubResource("TileSetAtlasSource_uop2j")

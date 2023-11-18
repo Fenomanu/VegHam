@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bykkn3rnpphp0"]
+[gd_scene load_steps=16 format=3 uid="uid://bykkn3rnpphp0"]
 
 [ext_resource type="Script" path="res://scripts/levels/level2.gd" id="1_d5d0k"]
 [ext_resource type="Script" path="res://scripts/TimeManager.gd" id="2_frijf"]
@@ -7,17 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://bvfjvuajg5dn2" path="res://arte/carretera.png" id="5_0pdab"]
 [ext_resource type="Texture2D" uid="uid://db6bw0pcu6fgd" path="res://test/rodrigo_test/tex.png" id="6_b0fsm"]
 [ext_resource type="PackedScene" uid="uid://cbc3vlyvj0jbh" path="res://recursos/personaje/human.tscn" id="7_2dy7n"]
+[ext_resource type="Texture2D" uid="uid://blj0bm5rgbw8t" path="res://flecha.png" id="8_jvs8n"]
+[ext_resource type="Texture2D" uid="uid://cuxt7lvi10g0q" path="res://escenas/niveles/BASURA.png" id="9_tc41m"]
 [ext_resource type="PackedScene" uid="uid://bqmqhqssqu2f3" path="res://escenas/props/character_cam.tscn" id="10_ru3xq"]
-[ext_resource type="Texture2D" uid="uid://bdm3p5l7k6wfk" path="res://test/rodrigo_test/estrella.png" id="10_xhw13"]
-[ext_resource type="Texture2D" uid="uid://cc3taxhebvwhc" path="res://test/rodrigo_test/round_nodetailsOutline.png" id="11_hr1o7"]
 [ext_resource type="PackedScene" uid="uid://ns62e6jxo6xl" path="res://escenas/ui/level_canvas.tscn" id="11_tpc1f"]
 [ext_resource type="PackedScene" uid="uid://ccmty86iu7x0w" path="res://escenas/niveles/level_3.tscn" id="12_qqvgf"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qwf3e"]
-atlas = ExtResource("11_hr1o7")
-region = Rect2(271.535, 678.75, 135.52, 137.94)
-margin = Rect2(30, 30, 60, 60)
-filter_clip = true
+[ext_resource type="Texture2D" uid="uid://3tqvdkq505ao" path="res://arte/sprites/CASA.png" id="13_okttw"]
+[ext_resource type="Texture2D" uid="uid://bhx7p6320e7mp" path="res://arte/sprites/CASA_3.png" id="14_uwpyx"]
+[ext_resource type="Texture2D" uid="uid://bw8ja8plsh8qm" path="res://arte/sprites/CASA_2.png" id="15_fv2rr"]
 
 [node name="level_2" type="Node2D"]
 
@@ -30,11 +27,17 @@ metas = [NodePath("../TileMap/meta 1"), NodePath("../TileMap/meta 2")]
 grid = NodePath("../TileMap")
 players = [NodePath("../TileMap/Human")]
 
-[node name="TimeManager" type="Node2D" parent="." node_paths=PackedStringArray("players", "turnCounter")]
+[node name="TimeManager" type="Node2D" parent="."]
 script = ExtResource("2_frijf")
-players = [NodePath("../TileMap/Human")]
-turnCounter = NodePath("../CanvasLayer/TrunCounter")
 maxTurns = 10
+turnCounter = Object(Control,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":3,"anchors_preset":0,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"offset_left":0.0,"offset_top":0.0,"offset_right":40.0,"offset_bottom":40.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","script":Resource("res://escenas/ui/TrunCounter.gd"),"next_scene":ExtResource("12_qqvgf"),"sliders":Array[Slider]([Object(HSlider,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":0,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","theme_override_styles/grabber_area":null,"min_value":0.0,"max_value":100.0,"step":1.0,"page":0.0,"value":0.0,"exp_edit":false,"rounded":false,"allow_greater":false,"allow_lesser":false,"editable":false,"scrollable":true,"tick_count":0,"ticks_on_borders":false,"script":null)
+, Object(HSlider,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":0,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","theme_override_styles/grabber_area":null,"min_value":0.0,"max_value":100.0,"step":1.0,"page":0.0,"value":0.0,"exp_edit":false,"rounded":false,"allow_greater":false,"allow_lesser":false,"editable":false,"scrollable":true,"tick_count":0,"ticks_on_borders":false,"script":null)
+, Object(HSlider,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":0,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","theme_override_styles/grabber_area":null,"min_value":0.0,"max_value":100.0,"step":1.0,"page":0.0,"value":0.0,"exp_edit":false,"rounded":false,"allow_greater":false,"allow_lesser":false,"editable":false,"scrollable":true,"tick_count":0,"ticks_on_borders":false,"script":null)
+]),"scores":Array[Label]([Object(Label,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":4,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":2,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","theme_override_font_sizes/font_size":400,"text":"10","label_settings":null,"horizontal_alignment":0,"vertical_alignment":0,"autowrap_mode":0,"justification_flags":163,"clip_text":false,"text_overrun_behavior":0,"uppercase":false,"tab_stops":PackedFloat32Array(),"lines_skipped":0,"max_lines_visible":-1,"visible_characters":-1,"visible_characters_behavior":0,"visible_ratio":1.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+, Object(Label,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":4,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":2,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","theme_override_font_sizes/font_size":400,"text":"10","label_settings":null,"horizontal_alignment":0,"vertical_alignment":0,"autowrap_mode":0,"justification_flags":163,"clip_text":false,"text_overrun_behavior":0,"uppercase":false,"tab_stops":PackedFloat32Array(),"lines_skipped":0,"max_lines_visible":-1,"visible_characters":-1,"visible_characters_behavior":0,"visible_ratio":1.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+, Object(Label,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":4,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":2,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","theme_override_font_sizes/font_size":400,"text":"10","label_settings":null,"horizontal_alignment":0,"vertical_alignment":0,"autowrap_mode":0,"justification_flags":163,"clip_text":false,"text_overrun_behavior":0,"uppercase":false,"tab_stops":PackedFloat32Array(),"lines_skipped":0,"max_lines_visible":-1,"visible_characters":-1,"visible_characters_behavior":0,"visible_ratio":1.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+]))
+
 
 [node name="TileMap" type="TileMap" parent="." node_paths=PackedStringArray("movables")]
 position = Vector2(320, 64)
@@ -50,14 +53,14 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(196607, 2, 0, 131071, 2, 0, 65535, 2, 0, -1, 2, 0, -65536, 2, 0, -65535, 2, 0, -65534, 2, 0, 131072, 2, 0, 3, 2, 0, 65539, 2, 0, 131075, 2, 0, 196611, 2, 0, 196608, 2, 0, 262144, 2, 0, 262147, 2, 0)
+layer_1/tile_data = PackedInt32Array(196607, 2, 0, 131071, 2, 0, 65535, 2, 0, -1, 2, 0, -65536, 2, 0, -65535, 2, 0, -65534, 2, 0, 131072, 2, 0, 3, 2, 0, 65539, 2, 0, 131075, 2, 0, 196611, 2, 0, 196608, 2, 0, 262144, 2, 0, 262147, 2, 0, 327680, 2, 0, 327683, 2, 0, 393216, 2, 0, 393219, 2, 0, 327681, 1, 0, 327682, 1, 0)
 layer_2/name = "human_obstacles"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array(65537, 2, 0)
+layer_2/tile_data = PackedInt32Array(65537, 8, 0)
 layer_3/name = "rat_obstacles"
 layer_3/enabled = true
 layer_3/modulate = Color(1, 1, 1, 1)
@@ -87,33 +90,20 @@ time_manager = NodePath("../../TimeManager")
 level = null
 
 [node name="meta 1" type="Sprite2D" parent="TileMap"]
-position = Vector2(512, 2560)
-texture = ExtResource("10_xhw13")
-centered = false
-
-[node name="Sprite2D" type="Sprite2D" parent="TileMap/meta 1"]
-scale = Vector2(2.5, 2.5)
-texture = SubResource("AtlasTexture_qwf3e")
+position = Vector2(1024, 2560)
+rotation = 1.5708
+texture = ExtResource("8_jvs8n")
 centered = false
 
 [node name="Basura" type="Sprite2D" parent="TileMap"]
 position = Vector2(1024, 1024)
-texture = ExtResource("10_xhw13")
-centered = false
-
-[node name="Sprite2D" type="Sprite2D" parent="TileMap/Basura"]
-scale = Vector2(2.5, 2.5)
-texture = SubResource("AtlasTexture_qwf3e")
+texture = ExtResource("9_tc41m")
 centered = false
 
 [node name="meta 2" type="Sprite2D" parent="TileMap"]
-position = Vector2(1024, 2560)
-texture = ExtResource("10_xhw13")
-centered = false
-
-[node name="Sprite2D" type="Sprite2D" parent="TileMap/meta 2"]
-scale = Vector2(2.5, 2.5)
-texture = SubResource("AtlasTexture_qwf3e")
+position = Vector2(1536, 2560)
+rotation = 1.5708
+texture = ExtResource("8_jvs8n")
 centered = false
 
 [node name="CharacterCam" parent="." instance=ExtResource("10_ru3xq")]
@@ -139,5 +129,85 @@ visible = false
 
 [node name="birdslider" parent="CanvasLayer/Sliders" index="2"]
 visible = false
+
+[node name="Casa" type="Sprite2D" parent="."]
+position = Vector2(319.5, -32.75)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("13_okttw")
+
+[node name="Casa5" type="Sprite2D" parent="."]
+position = Vector2(319.5, -32.75)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("13_okttw")
+
+[node name="Casa2" type="Sprite2D" parent="."]
+position = Vector2(448, -32)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("14_uwpyx")
+
+[node name="Casa3" type="Sprite2D" parent="."]
+position = Vector2(256, 40)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("14_uwpyx")
+
+[node name="Casa4" type="Sprite2D" parent="."]
+position = Vector2(256, 160)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("14_uwpyx")
+
+[node name="Casa6" type="Sprite2D" parent="."]
+position = Vector2(320, 264)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("14_uwpyx")
+
+[node name="Casa7" type="Sprite2D" parent="."]
+position = Vector2(320, 360)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("15_fv2rr")
+
+[node name="Casa8" type="Sprite2D" parent="."]
+position = Vector2(320, 432)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("13_okttw")
+
+[node name="Casa16" type="Sprite2D" parent="."]
+position = Vector2(320, 496)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("14_uwpyx")
+
+[node name="Casa9" type="Sprite2D" parent="."]
+position = Vector2(576, -32)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("15_fv2rr")
+
+[node name="Casa10" type="Sprite2D" parent="."]
+position = Vector2(576, 96)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("13_okttw")
+
+[node name="Casa11" type="Sprite2D" parent="."]
+position = Vector2(576, 184)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("14_uwpyx")
+
+[node name="Casa12" type="Sprite2D" parent="."]
+position = Vector2(576, 280)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("14_uwpyx")
+
+[node name="Casa13" type="Sprite2D" parent="."]
+position = Vector2(576, 352)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("13_okttw")
+
+[node name="Casa14" type="Sprite2D" parent="."]
+position = Vector2(576, 416)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("15_fv2rr")
+
+[node name="Casa15" type="Sprite2D" parent="."]
+position = Vector2(576, 480)
+scale = Vector2(0.125977, 0.125977)
+texture = ExtResource("14_uwpyx")
 
 [editable path="CanvasLayer"]
