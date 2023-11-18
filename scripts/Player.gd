@@ -16,7 +16,7 @@ var type : EClass
 var obstacle_layers = []
 
 var paused : bool = false
-var max_turn: int = 0
+var max_turn: int = 10
 
 var paths = {}
 var interactables = {}
@@ -54,6 +54,7 @@ func _ready():
 
 
 func _process(delta):
+	print("process")
 	if paused: return
 	
 	var mouse = grid.to_local(get_global_mouse_position())
@@ -63,20 +64,22 @@ func _process(delta):
 	if Input.is_action_just_pressed("Back"):
 		back()
 		time_manager.time_back(self)
+		update_position(gridPosition)
 	elif winner or len(historial) == max_turn:
 		return
 	elif draw_path(pos) and Input.is_action_just_pressed("Action"):
 		move()
 		time_manager.next_step(self)
+		update_position(gridPosition)
 	elif mov_pos in interactables and Input.is_action_just_pressed("Action"):
 		avoid_update = false
 		interact(interactables[mov_pos], mov_pos)
-		if not avoid_update:
-			update_position(gridPosition)
 		time_manager.next_step(self)
+		update_position(gridPosition)
 	elif Input.is_action_just_pressed("Pass"):
 		historial.append({"type": EAction.PASS})
 		time_manager.next_step(self)
+		update_position(gridPosition)
 
 
 func v3i_xy(v: Vector3i):

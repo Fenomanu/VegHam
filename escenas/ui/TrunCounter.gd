@@ -1,5 +1,5 @@
 extends Control
-class_name TurnCounter
+class_name TrunCounter
 
 @export var next_scene : PackedScene
 @export var sliders : Array[Slider]

@@ -3,7 +3,7 @@ class_name TimeManager
 
 
 @export var players : Array[Player]
-@export var turnCounter: TurnCounter
+@export var turnCounter: TrunCounter
 @export var maxTurns: int
 
 
@@ -22,7 +22,10 @@ func go_to(step: int):
 func next_step(caller):
 	var win = true
 	for player in players:
-		win = win and player.historial[-1].type == Player.EAction.WIN
+		if len(player.historial) > 0:
+			win = win and player.historial[-1].type == Player.EAction.WIN
+		else:
+			win = false
 	if win:
 		turnCounter.next_level()
 	

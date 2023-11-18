@@ -1,7 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://dna7hrbug4njv"]
+[gd_scene load_steps=19 format=3 uid="uid://dna7hrbug4njv"]
 
 [ext_resource type="Script" path="res://scripts/levels/level4.gd" id="1_dxfkx"]
-[ext_resource type="Script" path="res://escenas/niveles/CharacterCam.gd" id="1_p2axf"]
 [ext_resource type="Script" path="res://scripts/TimeManager.gd" id="2_1ayi7"]
 [ext_resource type="TileSet" uid="uid://bbrbh1tmn88so" path="res://test/rodrigo_test/test_env.tres" id="3_r1tkr"]
 [ext_resource type="Script" path="res://scripts/Grid.gd" id="4_pq1um"]
@@ -14,20 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://b2d6ahsqye8tl" path="res://arte/bandera.png" id="10_l6fkw"]
 [ext_resource type="Texture2D" uid="uid://c183pw0esyplm" path="res://arte/poste_roto.png" id="11_q7dok"]
 [ext_resource type="Texture2D" uid="uid://b5q8igl3jq6ep" path="res://arte/sprites/flecha.png" id="11_qlu6k"]
-[ext_resource type="Script" path="res://escenas/niveles/CharSelector.gd" id="11_xrl1j"]
 [ext_resource type="Texture2D" uid="uid://4u1iibilfwjp" path="res://arte/fusibles.png" id="12_jr5s2"]
-[ext_resource type="StyleBox" uid="uid://d5lxoxe5oy5h" path="res://arte/sprites/ui/level/normal.tres" id="12_stu15"]
-[ext_resource type="StyleBox" uid="uid://vg2dxmwu551w" path="res://arte/sprites/ui/level/hover.tres" id="13_m0aea"]
-[ext_resource type="StyleBox" uid="uid://4k12n2b7w3tx" path="res://arte/sprites/ui/level/pressed.tres" id="14_xnahg"]
-[ext_resource type="Texture2D" uid="uid://bv2spd2jnopti" path="res://arte/sprites/anna_dialogo.png" id="15_iduse"]
-[ext_resource type="Texture2D" uid="uid://durxojtc1f7rs" path="res://arte/sprites/sonya_dialogo.png" id="16_pr6uo"]
+[ext_resource type="PackedScene" uid="uid://ns62e6jxo6xl" path="res://escenas/ui/level_canvas.tscn" id="16_ryl8q"]
 [ext_resource type="Texture2D" uid="uid://3tqvdkq505ao" path="res://arte/sprites/CASA.png" id="16_ubhh1"]
-[ext_resource type="Texture2D" uid="uid://ctecnqs4fntme" path="res://arte/sprites/ruben_dialogo.png" id="17_i484y"]
+[ext_resource type="PackedScene" uid="uid://bimscy848e4ts" path="res://escenas/niveles/level_5.tscn" id="17_jub48"]
+[ext_resource type="PackedScene" uid="uid://bqmqhqssqu2f3" path="res://escenas/props/character_cam.tscn" id="18_w2755"]
 
 [node name="level_2" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("1_p2axf")
 
 [node name="MovableObjs" type="Node2D" parent="." node_paths=PackedStringArray("pipa", "cable", "fusible", "basuras", "metas", "grid", "players")]
 position = Vector2(320, 64)
@@ -41,9 +33,11 @@ metas = [NodePath("../TileMap/meta 1"), NodePath("../TileMap/meta 2"), NodePath(
 grid = NodePath("../TileMap")
 players = [NodePath("../TileMap/rat"), NodePath("../TileMap/Human")]
 
-[node name="TimeManager" type="Node2D" parent="." node_paths=PackedStringArray("players")]
+[node name="TimeManager" type="Node2D" parent="." node_paths=PackedStringArray("players", "turnCounter")]
 script = ExtResource("2_1ayi7")
 players = [NodePath("../TileMap/Human"), NodePath("../TileMap/rat")]
+turnCounter = NodePath("../CanvasLayer/TrunCounter")
+maxTurns = 15
 
 [node name="TileMap" type="TileMap" parent="." node_paths=PackedStringArray("movables")]
 position = Vector2(320, 64)
@@ -279,57 +273,21 @@ position = Vector2(4092, 258)
 scale = Vector2(0.992187, 0.992187)
 texture = ExtResource("16_ubhh1")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" parent="." instance=ExtResource("16_ryl8q")]
 
-[node name="CharSelector" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("cam", "buttons", "characters")]
-offset_right = 1024.0
-offset_bottom = 3080.0
-scale = Vector2(0.157093, 0.157093)
-script = ExtResource("11_xrl1j")
-cam = NodePath("../../Camera2D")
-buttons = [NodePath("Rat"), NodePath("Human"), NodePath("Bird")]
+[node name="TrunCounter" parent="CanvasLayer" index="0"]
+next_scene = ExtResource("17_jub48")
+
+[node name="CharSelector" parent="CanvasLayer" index="2" node_paths=PackedStringArray("cam", "characters")]
+cam = NodePath("../../CharacterCam")
 characters = [NodePath("../../TileMap/rat"), NodePath("../../TileMap/Human"), null]
 
-[node name="Rat" type="Button" parent="CanvasLayer/CharSelector"]
-layout_mode = 2
-theme_override_colors/icon_normal_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_hover_color = Color(0.882353, 0.882353, 0.882353, 1)
-theme_override_colors/icon_focus_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_styles/normal = ExtResource("12_stu15")
-theme_override_styles/hover = ExtResource("13_m0aea")
-theme_override_styles/pressed = ExtResource("14_xnahg")
-theme_override_styles/focus = ExtResource("12_stu15")
-toggle_mode = true
-icon = ExtResource("15_iduse")
-
-[node name="Human" type="Button" parent="CanvasLayer/CharSelector"]
-layout_mode = 2
-theme_override_colors/icon_normal_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_hover_color = Color(0.882353, 0.882353, 0.882353, 1)
-theme_override_colors/icon_focus_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_styles/normal = ExtResource("12_stu15")
-theme_override_styles/hover = ExtResource("13_m0aea")
-theme_override_styles/pressed = ExtResource("14_xnahg")
-theme_override_styles/focus = ExtResource("12_stu15")
-toggle_mode = true
-icon = ExtResource("16_pr6uo")
-
-[node name="Bird" type="Button" parent="CanvasLayer/CharSelector"]
+[node name="HBoxContainer3" parent="CanvasLayer/CharSelector" index="2"]
 visible = false
-layout_mode = 2
-theme_override_colors/icon_normal_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_hover_color = Color(0.882353, 0.882353, 0.882353, 1)
-theme_override_colors/icon_focus_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_styles/normal = ExtResource("12_stu15")
-theme_override_styles/hover = ExtResource("13_m0aea")
-theme_override_styles/pressed = ExtResource("14_xnahg")
-theme_override_styles/focus = ExtResource("12_stu15")
-toggle_mode = true
-icon = ExtResource("17_i484y")
 
-[connection signal="pressed" from="CanvasLayer/CharSelector/Rat" to="CanvasLayer/CharSelector" method="_on_rat_pressed"]
-[connection signal="pressed" from="CanvasLayer/CharSelector/Human" to="CanvasLayer/CharSelector" method="_on_human_pressed"]
-[connection signal="pressed" from="CanvasLayer/CharSelector/Bird" to="CanvasLayer/CharSelector" method="_on_bird_pressed"]
+[node name="birdslider" parent="CanvasLayer/Sliders" index="2"]
+visible = false
+
+[node name="CharacterCam" parent="." instance=ExtResource("18_w2755")]
+
+[editable path="CanvasLayer"]
