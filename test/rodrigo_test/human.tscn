@@ -1,11 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbc3vlyvj0jbh"]
 
-[ext_resource type="Script" path="res://scripts/Human.gd" id="1_4ot0d"]
+[ext_resource type="Script" path="res://scripts/players/Human.gd" id="1_kq4ht"]
 [ext_resource type="Texture2D" uid="uid://bno3k5clt6byb" path="res://arte/soniaFRONT.png" id="2_8w6l6"]
 
 [node name="character" type="Node2D"]
-script = ExtResource("1_4ot0d")
-distance = 2
+script = ExtResource("1_kq4ht")
 
 [node name="SoniaFront" type="Sprite2D" parent="."]
 texture = ExtResource("2_8w6l6")

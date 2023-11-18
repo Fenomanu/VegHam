@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqhcxug7fulh0"]
+
+[ext_resource type="Script" path="res://scripts/players/Rat.gd" id="1_k7tjg"]
+[ext_resource type="Texture2D" uid="uid://bno3k5clt6byb" path="res://arte/soniaFRONT.png" id="2_wyoq8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khbko"]
+atlas = ExtResource("2_wyoq8")
+region = Rect2(0, 400, 512, 512)
+
+[node name="rat" type="Node2D"]
+script = ExtResource("1_k7tjg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_khbko")
+centered = false

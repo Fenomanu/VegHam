@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://btd5imn3paf28"]
+
+[ext_resource type="Script" path="res://scripts/players/Bird.gd" id="1_50yt4"]
+[ext_resource type="Texture2D" uid="uid://bno3k5clt6byb" path="res://arte/soniaFRONT.png" id="2_g4d7a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4yeb"]
+atlas = ExtResource("2_g4d7a")
+region = Rect2(0, 0, 512, 512)
+
+[node name="bird" type="Node2D"]
+script = ExtResource("1_50yt4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_h4yeb")
+centered = false

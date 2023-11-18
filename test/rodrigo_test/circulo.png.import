@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3uq34kskeglr"
-path="res://.godot/imported/soniaFRONT.jpeg-cdbae2638ae8afc96c35953d19215986.ctex"
+uid="uid://7lih3aq5qcd2"
+path="res://.godot/imported/circulo.png-21dd3f90532d0a662abacb4c5e49d88e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arte/soniaFRONT.jpeg"
-dest_files=["res://.godot/imported/soniaFRONT.jpeg-cdbae2638ae8afc96c35953d19215986.ctex"]
+source_file="res://test/rodrigo_test/circulo.png"
+dest_files=["res://.godot/imported/circulo.png-21dd3f90532d0a662abacb4c5e49d88e.ctex"]
 
 [params]
 

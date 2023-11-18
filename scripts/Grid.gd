@@ -6,8 +6,9 @@ enum ActionType {MOVE}
 
 
 @export var arrow : Texture
+@export var movables : MovableObjs
 
-var directions = [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
+static var directions = [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
 
 
 func clear_path(path):
@@ -38,16 +39,40 @@ func tile_exists_in_layer(pos, layer):
 	return get_cell_tile_data(layer, pos) != null
 
 
-func get_paths(dist, src, obstacle_layers):
+func straight_path(dist, src, obstacle_layers, type, level):
+	var paths = {}
+	var options = []
+	for dir in directions:
+		options.append([dir, src])
+	var aux = []
+	for i in range(dist):
+		for path in options:
+			var curr = path[-1] + path[0]
+			if walkable(curr, obstacle_layers, level, type):
+				var new_path = path + [curr]
+				aux.append(new_path)
+				paths[curr] = {path[-1]: new_path.slice(1, len(new_path))}
+		options = aux
+		aux = []
+	return paths
+
+
+func walkable(pos, obstacle_layers, level, type):
+	return not obstacle_layers.any(func(o): return tile_exists_in_layer(pos, o)) and \
+		movables.check_walkable(Vector3i(pos.x, pos.y, level), type)
+
+
+func get_paths(dist, src, obstacle_layers, type, level):
+	if type == Player.EClass.BIRD:
+		return straight_path(dist, src, obstacle_layers, type, level)
 	var paths = {}
 	var options = [[src]]
-	print(options)
 	var aux = []
 	for i in range(dist):
 		for path in options:
 			for dir in directions:
 				var curr = path[-1] + dir
-				if not obstacle_layers.any(func(o): return tile_exists_in_layer(curr, o)) and curr not in path:
+				if curr not in path and walkable(curr, obstacle_layers, level, type):
 					var new_path = path + [curr]
 					if curr not in paths:
 						aux.append(new_path)

@@ -1,17 +1,19 @@
 extends Node2D
 class_name Player
 
-enum EAction {MOVE}
+enum EAction {MOVE, INTERACT, PASS}
 enum EClass {RAT=0, HUMAN=1, BIRD=2}
 
 @export var disp : Vector2
 @export var grid : Grid
 @export var movables : MovableObjs
-@export var distance : int = 1
 
-var paused : bool = false
+var distance : int = 1
+var level : int = 0
 var type : EClass
 var obstacle_layers = []
+
+var paused : bool = false
 
 var paths = {}
 var interactables = {}
@@ -23,7 +25,8 @@ var prev_target
 
 
 func _ready():
-	print("ready")
+	for i in range(len(obstacle_layers)):
+		obstacle_layers[i] = grid.get_layer_by_name(obstacle_layers[i])
 	update_position(grid.local_to_map(position))
 
 
@@ -48,8 +51,8 @@ func interact(obj, position):
 func update_position(pos):
 	grid.clear_path(prev_path)
 	position = grid.map_to_local(pos) + disp * grid.tile_set.tile_size.x
-	paths = grid.get_paths(distance, pos, obstacle_layers)
-	#interactables = movables.return_objs(pos, type)
+	paths = grid.get_paths(distance, pos, obstacle_layers, type, level)
+	interactables = movables.get_interactable(Vector3i(pos.x, pos.y, level), type)
 
 
 func back():
@@ -57,6 +60,8 @@ func back():
 		var action = historial.pop_back()
 		if action.type == EAction.MOVE:
 			update_position(action.path[0])
+		elif action.type == EAction.PASS:
+			pass
 
 
 func move():
