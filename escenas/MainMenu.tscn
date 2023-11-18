@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf3iv636proqs"]
+[gd_scene load_steps=7 format=3 uid="uid://bf3iv636proqs"]
 
 [ext_resource type="Script" path="res://escenas/MainMenu.gd" id="1_fma8s"]
 [ext_resource type="PackedScene" uid="uid://cgbjwxaenlhw" path="res://escenas/niveles/level_1.tscn" id="2_dvjuc"]
 [ext_resource type="Texture2D" uid="uid://ilqwibpxo46n" path="res://arte/sprites/ui/sonya.png" id="3_hcpla"]
 [ext_resource type="Texture2D" uid="uid://dqsrixcg7tl52" path="res://arte/sprites/ui/logo.png" id="4_tupog"]
 [ext_resource type="Theme" uid="uid://cqllbjjt33jjy" path="res://arte/sprites/uitheme.tres" id="4_u7tss"]
+[ext_resource type="AudioStream" uid="uid://jcwl8acuvwd5" path="res://Musica/musica menu inicial.mp3" id="6_lia6a"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -74,6 +75,11 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = ExtResource("4_u7tss")
 text = "Quit"
+
+[node name="MainMenuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_lia6a")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_quit_pressed"]

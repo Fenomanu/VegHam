@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://ns62e6jxo6xl"]
+[gd_scene load_steps=15 format=3 uid="uid://ns62e6jxo6xl"]
 
 [ext_resource type="Script" path="res://escenas/niveles/CharSelector.gd" id="1_as2xr"]
 [ext_resource type="StyleBox" uid="uid://d5lxoxe5oy5h" path="res://arte/sprites/ui/level/normal.tres" id="2_sm8cv"]
+[ext_resource type="AudioStream" uid="uid://hpkpjrmddykp" path="res://Musica/sfx/click.mp3" id="2_t5wi1"]
 [ext_resource type="StyleBox" uid="uid://vg2dxmwu551w" path="res://arte/sprites/ui/level/hover.tres" id="3_1ywy0"]
 [ext_resource type="StyleBox" uid="uid://4k12n2b7w3tx" path="res://arte/sprites/ui/level/pressed.tres" id="4_lvyec"]
 [ext_resource type="Texture2D" uid="uid://bv2spd2jnopti" path="res://arte/sprites/anna_dialogo.png" id="5_bwc5p"]
 [ext_resource type="Texture2D" uid="uid://durxojtc1f7rs" path="res://arte/sprites/sonya_dialogo.png" id="6_uuy6h"]
 [ext_resource type="Texture2D" uid="uid://ctecnqs4fntme" path="res://arte/sprites/ruben_dialogo.png" id="7_tnaog"]
 [ext_resource type="Script" path="res://escenas/ui/TrunCounter.gd" id="8_vk8j1"]
+[ext_resource type="AudioStream" uid="uid://dklqraprtqty7" path="res://Musica/musica in game.mp3" id="10_yuro0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wee6r"]
 bg_color = Color(0, 0, 0, 1)
@@ -50,12 +52,16 @@ script = ExtResource("8_vk8j1")
 sliders = [NodePath("../Sliders/ratslider"), NodePath("../Sliders/humanslider"), NodePath("../Sliders/birdslider")]
 scores = [NodePath("../CharSelector/HBoxContainer/RatLabel"), NodePath("../CharSelector/HBoxContainer2/HumanLabel"), NodePath("../CharSelector/HBoxContainer3/BirdLabel")]
 
-[node name="CharSelector" type="VBoxContainer" parent="." node_paths=PackedStringArray("buttons", "characters")]
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_t5wi1")
+
+[node name="CharSelector" type="VBoxContainer" parent="." node_paths=PackedStringArray("button_sound", "buttons", "characters")]
 offset_right = 1024.0
 offset_bottom = 3080.0
 scale = Vector2(0.12, 0.12)
 pivot_offset = Vector2(20, 20)
 script = ExtResource("1_as2xr")
+button_sound = NodePath("../ButtonSound")
 buttons = [null, null, null]
 characters = [null, null, null]
 
@@ -140,14 +146,21 @@ theme_override_constants/separation = 10
 [node name="ratslider" type="HSlider" parent="Sliders"]
 layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_5di2r")
+editable = false
 
 [node name="humanslider" type="HSlider" parent="Sliders"]
 layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_20ub3")
+editable = false
 
 [node name="birdslider" type="HSlider" parent="Sliders"]
 layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_n7g3u")
+editable = false
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_yuro0")
+autoplay = true
 
 [connection signal="pressed" from="CharSelector/HBoxContainer/Rat" to="CharSelector" method="_on_rat_pressed"]
 [connection signal="pressed" from="CharSelector/HBoxContainer2/Human" to="CharSelector" method="_on_human_pressed"]
