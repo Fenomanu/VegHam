@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cfxwxkll1pihx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqojv"]
+border_width_right = 1024
+border_color = Color(0, 0, 0, 1)
+
+[resource]
+/styles/flow = SubResource("StyleBoxFlat_fqojv")

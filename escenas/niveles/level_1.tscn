@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cgbjwxaenlhw"]
+[gd_scene load_steps=25 format=3 uid="uid://cgbjwxaenlhw"]
 
 [ext_resource type="Script" path="res://escenas/niveles/CharacterCam.gd" id="1_7qglc"]
 [ext_resource type="Script" path="res://scripts/levels/level1.gd" id="2_2bd7i"]
@@ -23,6 +23,28 @@ atlas = ExtResource("11_7xy4l")
 region = Rect2(271.535, 678.75, 135.52, 137.94)
 margin = Rect2(30, 30, 60, 60)
 filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndwnl"]
+atlas = ExtResource("11_7xy4l")
+region = Rect2(686.59, 545.125, 131.89, 135.52)
+margin = Rect2(30, 30, 60, 60)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nfrr"]
+border_width_left = 5
+border_width_top = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oikv"]
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wee6r"]
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 80
+border_width_right = 80
+border_color = Color(0, 0, 0, 0)
+border_blend = true
+corner_radius_top_right = 50
+corner_detail = 20
 
 [node name="level_1" type="Node2D"]
 
@@ -127,10 +149,46 @@ centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 405
+alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_1nfrr")
+
+[node name="VSeparator2" type="VSeparator" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_1nfrr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 230
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4oikv")
+
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4oikv")
+
 [node name="CharSelector" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("cam", "buttons", "characters")]
 offset_right = 1024.0
 offset_bottom = 3080.0
-scale = Vector2(0.157093, 0.157093)
+scale = Vector2(0.12, 0.12)
+pivot_offset = Vector2(20, 20)
 script = ExtResource("12_odfut")
 cam = NodePath("../../CharacterCam")
 buttons = [NodePath(""), NodePath("Human"), NodePath("")]
@@ -175,4 +233,29 @@ theme_override_styles/focus = ExtResource("13_1tqhk")
 toggle_mode = true
 icon = ExtResource("18_7wcbe")
 
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_top = 463.0
+offset_right = 415.895
+offset_bottom = 671.465
+theme_override_styles/panel = SubResource("StyleBoxFlat_wee6r")
+
+[node name="Sliders" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 32.0
+offset_top = 518.0
+offset_right = 238.59
+offset_bottom = 586.0
+scale = Vector2(1.54959, 1.54959)
+theme_override_constants/separation = 10
+
+[node name="ratslider" type="HSlider" parent="CanvasLayer/Sliders"]
+layout_mode = 2
+
+[node name="humanslider" type="HSlider" parent="CanvasLayer/Sliders"]
+layout_mode = 2
+
+[node name="birdslider" type="HSlider" parent="CanvasLayer/Sliders"]
+layout_mode = 2
+
+[connection signal="pressed" from="CanvasLayer/CharSelector/Rat" to="CanvasLayer/CharSelector" method="_on_rat_pressed"]
 [connection signal="pressed" from="CanvasLayer/CharSelector/Human" to="CanvasLayer/CharSelector" method="_on_human_pressed"]
