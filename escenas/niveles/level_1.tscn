@@ -115,6 +115,7 @@ disp = Vector2(-0.5, -0.5)
 grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
 time_manager = NodePath("../../TimeManager")
+level = 1
 
 [node name="Block" type="Sprite2D" parent="TileMap"]
 position = Vector2(-1536, 2560)
