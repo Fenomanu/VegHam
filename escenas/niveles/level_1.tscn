@@ -93,25 +93,28 @@ arrow = ExtResource("5_bros8")
 selected = ExtResource("6_rtbjj")
 movables = NodePath("../MovableObjs")
 
-[node name="Human" parent="TileMap" node_paths=PackedStringArray("grid", "movables") instance=ExtResource("7_xp2tf")]
+[node name="Human" parent="TileMap" node_paths=PackedStringArray("grid", "movables", "time_manager") instance=ExtResource("7_xp2tf")]
 z_index = 10
 position = Vector2(0, 1024)
 disp = Vector2(-0.5, 0.5)
 grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
+time_manager = NodePath("../../TimeManager")
 
-[node name="rat" parent="TileMap" node_paths=PackedStringArray("grid", "movables") instance=ExtResource("8_mit2j")]
+[node name="rat" parent="TileMap" node_paths=PackedStringArray("grid", "movables", "time_manager") instance=ExtResource("8_mit2j")]
 position = Vector2(4608, 512)
 disp = Vector2(-0.5, -0.5)
 grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
+time_manager = NodePath("../../TimeManager")
 
-[node name="bird" parent="TileMap" node_paths=PackedStringArray("grid", "movables") instance=ExtResource("9_unox2")]
+[node name="bird" parent="TileMap" node_paths=PackedStringArray("grid", "movables", "time_manager") instance=ExtResource("9_unox2")]
 position = Vector2(2048, 3072)
 scale = Vector2(1, 1.00237)
 disp = Vector2(-0.5, -0.5)
 grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
+time_manager = NodePath("../../TimeManager")
 
 [node name="Block" type="Sprite2D" parent="TileMap"]
 position = Vector2(-1536, 2560)
