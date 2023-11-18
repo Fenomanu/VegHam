@@ -6,7 +6,8 @@ enum ActionType {MOVE}
 
 
 @export var arrow : Texture
-@export var size : int = 16
+
+var directions = [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
 
 
 func clear_path(path):
@@ -38,10 +39,9 @@ func tile_exists_in_layer(pos, layer):
 
 
 func get_paths(dist, src, obstacle_layers):
-	var directions = [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
-
 	var paths = {}
-	var options = [[local_to_map(to_local(src))]]
+	var options = [[src]]
+	print(options)
 	var aux = []
 	for i in range(dist):
 		for path in options:

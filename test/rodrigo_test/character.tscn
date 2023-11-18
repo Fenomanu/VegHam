@@ -1,15 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbc3vlyvj0jbh"]
 
-[ext_resource type="Texture2D" uid="uid://cc3taxhebvwhc" path="res://test/rodrigo_test/round_nodetailsOutline.png" id="1_7q817"]
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_y02hf"]
+[ext_resource type="Script" path="res://scripts/Human.gd" id="1_4ot0d"]
+[ext_resource type="Texture2D" uid="uid://bno3k5clt6byb" path="res://arte/soniaFRONT.png" id="2_8w6l6"]
 
 [node name="character" type="Node2D"]
-script = ExtResource("1_y02hf")
+script = ExtResource("1_4ot0d")
+distance = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_7q817")
+[node name="SoniaFront" type="Sprite2D" parent="."]
+texture = ExtResource("2_8w6l6")
 centered = false
-offset = Vector2(1, 1)
-hframes = 6
-vframes = 6
-region_rect = Rect2(683, 679.795, 136.41, 142.256)
+offset = Vector2(0, -768)

@@ -14,7 +14,7 @@ func _process(delta):
 	
 	pass
 
-func check_walkable(pos, player_class):
+func check_walkable():
 	
 	pass
 

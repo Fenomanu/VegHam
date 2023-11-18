@@ -4,15 +4,17 @@ class_name Player
 enum EAction {MOVE}
 enum EClass {RAT, HUMAN, BIRD}
 
-
+@export var disp : Vector2
 @export var grid : Grid
-@export var distance : int
+@export var movables : MovableObjs
+@export var distance : int = 1
 
 var paused : bool = false
 var type : EClass
 var obstacle_layers = []
 
 var paths = {}
+var interactables = {}
 var steps = []
 
 var prev_path = []
@@ -21,8 +23,8 @@ var prev_target
 
 
 func _ready():
-	obstacle_layers = [grid.get_layer_by_name("obstacles")]
-	paths = grid.get_paths(distance, global_position, obstacle_layers)
+	print("ready")
+	update_position(grid.local_to_map(position))
 
 
 func _process(delta):
@@ -35,22 +37,31 @@ func _process(delta):
 		move()
 	elif Input.is_action_just_pressed("Back"):
 		back()
+	elif pos in interactables and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		interact(interactables[pos], pos)
+
+
+func interact(obj, position):
+	pass
+
+
+func update_position(pos):
+	grid.clear_path(prev_path)
+	position = grid.map_to_local(pos) + disp * grid.tile_set.tile_size.x
+	paths = grid.get_paths(distance, pos, obstacle_layers)
+	#interactables = movables.return_objs(pos, type)
 
 
 func back():
 	if not historial.is_empty():
 		var action = historial.pop_back()
 		if action.type == EAction.MOVE:
-			position = grid.map_to_local(action.path[0]) - Vector2.ONE * (grid.size / 2)
-			grid.clear_path(prev_path)
-			paths = grid.get_paths(distance, global_position, obstacle_layers)
+			update_position(action.path[0])
 
 
 func move():
 	historial.append({"type": EAction.MOVE, "path": steps})
-	position = grid.map_to_local(steps[-1]) - Vector2.ONE * (grid.size / 2)
-	grid.clear_path(prev_path)
-	paths = grid.get_paths(distance, global_position, obstacle_layers)
+	update_position(steps[-1])
 
 
 func draw_path(pos):
