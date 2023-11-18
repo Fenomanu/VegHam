@@ -1,15 +1,15 @@
 extends Node2D
 class_name Player
 
-enum EAction {MOVE, INTERACT, PASS, ACTION}
+enum EAction {MOVE, INTERACT, PASS}
 enum EClass {RAT, HUMAN, BIRD}
 
 @export var disp : Vector2
 @export var grid : Grid
 @export var movables : MovableObjs
+@export var level : int = 0
 
 var distance : int = 1
-var level : int = 0
 var type : EClass
 var obstacle_layers = []
 
@@ -25,6 +25,14 @@ var historial = []
 var prev_path = []
 var prev_selected = []
 var prev_target
+
+
+func pause(p):
+	paused = p
+	if paused:
+		clear()
+	else:
+		update_position(gridPosition)
 
 
 func _ready():
@@ -50,6 +58,16 @@ func _process(delta):
 		update_position(gridPosition)
 	elif Input.is_action_just_pressed("Pass"):
 		historial.append({"type": EAction.PASS})
+
+
+func time_step(action):
+	if action.type == EAction.MOVE:
+		update_position(action.path[-1])
+	elif action.type == EAction.PASS:
+		pass
+	else:
+		return false
+	return true
 
 
 func time_back(action):

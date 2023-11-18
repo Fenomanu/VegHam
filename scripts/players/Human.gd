@@ -26,8 +26,24 @@ func interact(obj, position):
 			historial.append({
 				"type": EAction.INTERACT, 
 				"obj": obj, 
-				"position": mov_pos
+				"position": position,
+				"mov_pos": mov_pos
 			})
+
+
+func time_step(action):
+	if super.time_step(action): 
+		return true
+	
+	if action.type == EAction.INTERACT and action.obj.type == MovableObjs.EMovable.BLOCK:
+		var pos = Vector2i(action.mov_pos.x, action.mov_pos.y)
+		
+		movables.move_object(action.position, action.mov_pos)
+		action.obj.sprite.position = grid.map_to_local(pos) - Vector2(0.5, 0.5) * grid.tile_set.tile_size.x
+		update_position(Vector2i(action.position.x, action.position.y))
+	else:
+		return false
+	return true
 
 
 func time_back(action):
@@ -37,7 +53,7 @@ func time_back(action):
 	if action.type == EAction.INTERACT:
 		var obj = action.obj
 		if obj.type == MovableObjs.EMovable.BLOCK:
-			var position = action.position
+			var position = action.mov_pos
 			
 			var mov_player = Vector3i(gridPosition.x, gridPosition.y, position.z)
 			var mov_pos = mov_player + (mov_player - position)

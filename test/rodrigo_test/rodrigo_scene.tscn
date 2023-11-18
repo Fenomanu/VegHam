@@ -101,6 +101,7 @@ position = Vector2(2048, 3072)
 disp = Vector2(-0.5, -0.5)
 grid = NodePath("..")
 movables = NodePath("../../MovableObjs")
+level = 1
 
 [node name="Block" type="Sprite2D" parent="TileMap"]
 position = Vector2(-1536, 2560)
@@ -117,23 +118,35 @@ z_index = 11
 position = Vector2(4608, 2560)
 texture = ExtResource("8_j0o54")
 centered = false
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 512)
 
 [node name="Tendido3" type="Sprite2D" parent="TileMap"]
 z_index = 11
 position = Vector2(4608, 3072)
 texture = ExtResource("8_j0o54")
 centered = false
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 512)
 
 [node name="Tendido" type="Sprite2D" parent="TileMap"]
 z_index = 11
 position = Vector2(4608, 3584)
 texture = ExtResource("8_j0o54")
 centered = false
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 512)
 
 [node name="Cable" type="Sprite2D" parent="TileMap"]
 position = Vector2(4096, 4096)
 texture = ExtResource("8_j0o54")
 centered = false
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 512)
 
 [node name="Sprite2D" type="Sprite2D" parent="TileMap/Cable"]
 scale = Vector2(2.5, 2.5)

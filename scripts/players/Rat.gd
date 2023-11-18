@@ -13,9 +13,43 @@ func _ready():
 
 func interact(obj, position):
 	if obj.type == MovableObjs.EMovable.CONTROL:
-		obj.can_interact = []
-		# set sprite to broken
-		for t in obj.connected_to:
+		var action = {
+			"type": EAction.INTERACT, 
+			"obj": obj
+		}
+		time_step(action)
+		historial.append({
+			"type": EAction.INTERACT, 
+			"obj": obj
+		})
+
+
+func time_step(action):
+	if super.time_step(action): 
+		return true
+	
+	if action.type == EAction.INTERACT and action.obj.type == MovableObjs.EMovable.CONTROL:
+		action.obj.can_interact = []
+		action.obj.sprite.set_frame(1)
+		for t in action.obj.connected_to:
 			t.block = false
-			# set sprite no energy
-			# all players should recalculate paths
+			t.sprite.set_frame(1)
+	else:
+		return false
+	return true
+
+func time_back(action):
+	if super.time_back(action):
+		return true
+	
+	if action.type == EAction.INTERACT:
+		var obj = action.obj
+		if obj.type == MovableObjs.EMovable.CONTROL:
+			obj.can_interact = [Player.EClass.RAT]
+			obj.sprite.set_frame(0)
+			for t in obj.connected_to:
+				t.block = true
+				t.sprite.set_frame(0)
+	else:
+		return false
+	return true
